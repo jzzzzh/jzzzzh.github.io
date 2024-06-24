@@ -136,3 +136,20 @@ name {
 span.highlight {
   background-color: #ffffd0;
 }
+
+.bold-red {
+  font-weight: bold;
+  color: red;
+}
+
+.more-news {
+  display: none;
+}
+
+#expand-btn {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+}
