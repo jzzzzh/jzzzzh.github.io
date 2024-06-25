@@ -144,9 +144,113 @@
                 <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
                   <!-- <a href="under-review.html" id="AutoCost"> -->
 
-                  <papertitle>Not Only Pre‑train: Perceptual MAE for Image Manipulation Localization</papertitle>
+                  <papertitle>IMDL-BenCo: A Comprehensive Benchmark and Codebase for Image Manipulation Detection &
+                    Localization</papertitle>
+                  [<a href="https://arxiv.org/abs/2406.10580">arxiv</a>]
                   <br>
-                  XiAOCHEN MA, <b>ZHUOHANG JiANG</b>, AND JiZHE ZHOU
+                  Xiaochen Ma, Xuekang Zhu, Lei Su, Bo Du, <b>Zhuohang Jiang</b>, Bingkui Tong, Zeyu Lei, Xinyu Yang,
+                  Chi-Man Pun, Jiancheng Lv, Jizhe Zhou
+
+                  <br>
+                  <font color='gray'>
+                    A comprehensive benchmark is yet to be established in the Image Manipulation Detection &
+                    Localization (IMDL) field. The absence of such a benchmark leads to insufficient and misleading
+                    model evaluations, severely undermining the development of this field. However, the scarcity of
+                    open-sourced baseline models and inconsistent training and evaluation protocols make conducting
+                    rigorous experiments and faithful comparisons among IMDL models challenging. To address these
+                    challenges, we introduce IMDL-BenCo, the first comprehensive IMDL benchmark and modular codebase.
+                    IMDL-BenCo:i) decomposes the IMDL framework into standardized, reusable components and
+                    revises the model construction pipeline, improving coding efficiency and customization
+                    flexibility;ii) fully implements or incorporates training code for state-of-the-art models
+                    to establish a comprehensive IMDL benchmark; and iii) conducts deep analysis based on the
+                    established benchmark and codebase, offering new insights into IMDL model architecture, dataset
+                    characteristics, and evaluation standards. Specifically, IMDL-BenCo includes common processing
+                    algorithms, 8 state-of-the-art IMDL models (1 of which are reproduced from scratch), 2 sets of
+                    standard training and evaluation protocols, 15 GPU-accelerated evaluation metrics, and 3 kinds of
+                    robustness evaluation. This benchmark and codebase represent a significant leap forward in
+                    calibrating the current progress in the IMDL field and inspiring future breakthroughs.
+                  </font>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
+                  <!-- <a href="under-review.html" id="AutoCost"> -->
+
+                  <papertitle>Beyond Visual Appearances: Privacy-sensitive Objects Identification via Hybrid Graph
+                    Reasoning</papertitle>
+                  [<a href="https://arxiv.org/abs/2406.12736">arxiv</a>]
+                  <br>
+                  <b>Zhuohang Jiang</b>, Bingkui Tong, Xia Du, Ahmed Alhammadi, Jizhe Zhou
+
+                  <br>
+                  <font color='gray'>
+                    To explicitly derive the objects' privacy class from the scene contexts, in this paper, we interpret
+                    the POI task as a visual reasoning task aimed at the privacy of each object in the scene. Following
+                    this interpretation, we propose the PrivacyGuard framework for POI. PrivacyGuard contains three
+                    stages. i) Structuring: an unstructured image is first converted into a structured, heterogeneous
+                    scene graph that embeds rich scene contexts. ii) Data Augmentation: a contextual perturbation
+                    oversampling strategy is proposed to create slightly perturbed privacy-sensitive objects in a scene
+                    graph, thereby balancing the skewed distribution of privacy classes. iii) Hybrid Graph Generation &
+                    Reasoning: the balanced, heterogeneous scene graph is then transformed into a hybrid graph by
+                    endowing it with extra "node-node" and "edge-edge" homogeneous paths. These homogeneous paths allow
+                    direct message passing between nodes or edges, thereby accelerating reasoning and facilitating the
+                    capturing of subtle context changes.
+                  </font>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
+                  <!-- <a href="under-review.html" id="AutoCost"> -->
+
+                  <papertitle>IML-ViT: Benchmarking Image Manipulation Localization by Vision Transformer</papertitle>
+                  [<a href="https://arxiv.org/abs/2307.14863">arxiv</a>]
+                  <br>
+                  Xiaochen Ma, Bo Du,<b>Zhuohang Jiang</b>, Ahmed Y. Al Hammadi, Jizhe Zhou
+
+                  <br>
+                  <font color='gray'>
+                    Due to limited datasets, there is currently no pure ViT-based approach for IML to serve as a
+                    benchmark, and CNNs dominate the entire task. Nevertheless, CNNs suffer from weak long-range and
+                    non-semantic modeling. To bridge this gap, based on the fact that artifacts are sensitive to image
+                    resolution, amplified under multi-scale features, and massive at the manipulation border, we
+                    formulate the answer to the former question as building a ViT with high-resolution capacity,
+                    multi-scale feature extraction capability, and manipulation edge supervision that could converge
+                    with a small amount of data. We term this simple but effective ViT paradigm IML-ViT, which has
+                    significant potential to become a new benchmark for IML. Extensive experiments on five benchmark
+                    datasets verified our model outperforms the state-of-the-art manipulation localization methods.
+                  </font>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
+                  <!-- <a href="under-review.html" id="AutoCost"> -->
+
+                  <papertitle>Perceptual MAE for Image Manipulation Localization: A High-level Vision Learner Focusing
+                    on Low-level Features</papertitle> [<a href="https://arxiv.org/abs/2310.06525">arxiv</a>]
+                  <br>
+                  Xiaochen Ma, <b>Zhuohang Jiang</b>, Xiong Xu, Chi-Man Pun, Jizhe Zhou
                   <br>
                   <font color='gray'> This necessitates IML models to carry out a semantic understanding of the entire
                     image. In this paper, we
@@ -174,7 +278,7 @@
                   <!-- <a href="under-review.html" id="AutoCost"> -->
                   <papertitle>Contour‑Aware Contrastive Learning for Image Manipulation Localization</papertitle>
                   <br>
-                  QiN Li, CHUNFANG YU, <b>ZHUOHANG JiANG</b>, AND JiZHE ZHOU
+                  Qin Li, Chunfang Yu, <b>Zhuohang Jiang</b>, AND Jizhe Zhou
                   <br>
                   <font color='gray'>We propose a novel Contour‑aware Contrastive Learning Network (CaCL‑Net) based on
                     the encoder‑decoder architecture. On the encoder side,
@@ -331,7 +435,7 @@
             <tbody>
               <tr>
                 <td style="padding:0px 20px 20px 20px;width:75%;vertical-align:middle">
-                  <a href="http://www.machineilab.org/"> MachineILab</a>, <b>Sichuan University</b>
+                  <a href="http://dicalab.cn/"> DICALab</a>, <b>Sichuan University</b>
                   <br>
                   Research Assistant • Sep. 2022 to Jun. 2024
                   <br>
@@ -339,8 +443,8 @@
                     Zhou</a>
                   </br>
                 </td>
-                <td style="padding:0px 20px 0px 20px;width:8%;vertical-align:middle"><img src="images/MIL.png"
-                    width="85" height="75"></td>
+                <td style="padding:0px 20px 0px 20px;width:8%;vertical-align:middle"><img src="images/DICA.png"
+                    width="75" height="75"></td>
               </tr>
             </tbody>
           </table>
