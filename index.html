@@ -12,11 +12,17 @@
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="magic/dist/magic.css">
+  <link rel="stylesheet" href="hover.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 </head>
+
+
 
 <body>
   <table
-    style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;" >
     <tbody>
       <tr style="padding:0px">
         <td style="padding:0px">
@@ -25,9 +31,13 @@
             <tbody>
               <tr style="padding:0px">
                 <td style="padding:2.5%;width:63%;vertical-align:middle">
-                  <p style="text-align:center">
-                    <name>Zhuohang Jiang</name>
+                  <p style="text-align:center" >
+                    <div class="wow animate__animated animate__fadeInDown" style="font-size: 2.5em; font-weight: bold;">
+                      <name>Zhuohang Jiang</name>
+                    </div>
+                    
                   </p>
+                  <div>  
                     <p>I am currently pursuing a PhD degree at the <strong> <a
                       href="https://www.polyu.edu.hk/">Hong Kong Polytechnic University</a></strong>. My supervisors are <a
                       href="https://scholar.google.cz/citations?user=D1LEg-YAAAAJ&hl=zh-CN">Qing Li</a>
@@ -46,6 +56,7 @@
                     I participated in one National Natural Science Foundation of China project and one National Key R&D
                     Program of China.
                     </p>
+                  </div>
                     
                   <p style="text-align:center">
                     <a href="mailto:zhuohangjiang2002@gmail.com">Email</a> &nbsp/&nbsp
@@ -135,7 +146,7 @@
                 </div>
 
                     <div style="text-align: center; margin-top: 20px;">
-                    <button id="expand-btn" onclick="showMoreNews()" style="padding: 10px 20px; font-size: 16px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    <button id="expand-btn" onclick="showMoreNews()" class="hvr-grow" style="padding: 10px 20px; font-size: 16px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">
                       More News
                     </button>
                     </div></div>
@@ -370,22 +381,29 @@
             </div>
 
             <div style="text-align: center; margin-top: 20px;">
-              <button id="expand-publications-btn" onclick="togglePublications()" style="padding: 10px 20px; font-size: 16px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">
+              <button id="expand-publications-btn" onclick="togglePublications()" class="hvr-grow" style="padding: 10px 20px; font-size: 16px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">
               More Publications
               </button>
             </div></div>
 
             <script>
             function togglePublications() {
-              var morePublications = document.querySelector('.more-publications');
-              var button = document.getElementById('expand-publications-btn');
-              if (morePublications.style.display === 'none') {
-              morePublications.style.display = 'block';
-              button.textContent = 'Less Publications';
-              } else {
-              morePublications.style.display = 'none';
-              button.textContent = 'More Publications';
-              }
+                var morePublications = document.querySelector('.more-publications');
+                var button = document.getElementById('expand-publications-btn');
+                button.addEventListener('click', function() {
+                if (morePublications.style.display === 'none') {
+                  morePublications.style.display = 'block';
+                  button.classList.remove('hvr-grow');
+                  button.classList.add('hvr-shrink');
+                  button.textContent = 'Less Publications';
+                  morePublications.classList.add('magictime', 'puffIn');
+                } else {
+                  morePublications.style.display = 'none';
+                  button.classList.remove('hvr-shrink');
+                  button.classList.add('hvr-grow');
+                  button.textContent = 'More Publications';
+                }
+                });
             }
             </script>
 
@@ -395,7 +413,7 @@
             <tbody>
               <tr>
                 <td>
-                  <heading>Research Projects</heading>
+                  <heading class="">Research Projects</heading>
                 </td>
               </tr>
             </tbody>
@@ -590,7 +608,7 @@
             </tbody>
           </table>
 
-          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20" >
             <tbody>
               <tr>
                 <td>
@@ -638,7 +656,7 @@
               <tr>
                 <td style="padding:20px">
                   <div style="float:left;">
-                    Updated at Jun. 2024
+                    Updated at Apr. 2025
                   </div>
                   <div style="float:right;">
                     Thanks <a href="https://jonbarron.info">Jon Barron</a> for this amazing template
@@ -656,19 +674,28 @@
 
 
   <script>
+    new WOW().init();
+
+
     function showMoreNews() {
-      var moreNews = document.getElementsByClassName('more-news');
-      let isAllVisible = true;
-      for (let i = 0; i < moreNews.length; i++) {
-        if (moreNews[i].style.display === 'none') {
-          moreNews[i].style.display = 'block';
-          isAllVisible = false;
-        } else {
-          moreNews[i].style.display = 'none';
-        }
+      var moreNews = document.querySelector('.more-news');
+      var button = document.getElementById('expand-btn');
+      button.addEventListener('click', function() {
+      if (moreNews.style.display === 'none') {
+        moreNews.style.display = 'block';
+        button.textContent = 'Less News';
+        button.classList.remove('hvr-grow');
+        button.classList.add('hvr-shrink');
+        moreNews.classList.add('magictime', 'puffIn');
+      } else {
+        moreNews.style.display = 'none';
+        button.textContent = 'More News';
+        button.classList.remove('hvr-shrink');
+        button.classList.add('hvr-grow');
       }
-      document.getElementById('expand-btn').textContent = isAllVisible ? 'More News' : 'Less News';
+      });
     }
+
 
 
   </script>
