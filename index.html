@@ -16,6 +16,34 @@
   <link rel="stylesheet" href="magic/dist/magic.css">
   <link rel="stylesheet" href="hover.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <style>
+    .aligned-table {
+      width: 100% !important;
+      table-layout: fixed !important;
+      margin-bottom: 10px !important;
+    }
+
+    .aligned-table td:first-child {
+      width: 60% !important;
+      text-align: left !important;
+    }
+
+    .aligned-table td:last-child {
+      width: 40% !important;
+      text-align: right !important;
+    }
+
+    /* 确保Award和Professional Service章节的右侧内容完美对齐 */
+    table[style*="table-layout: fixed"] td:last-child {
+      text-align: right !important;
+      padding-right: 0 !important;
+    }
+
+    table[style*="table-layout: fixed"] td:first-child {
+      text-align: left !important;
+      padding-left: 0 !important;
+    }
+  </style>
 </head>
 
 
@@ -42,6 +70,7 @@
                           Kong Polytechnic University</a></strong>. My supervisors are <a
                         href="https://scholar.google.cz/citations?user=D1LEg-YAAAAJ&hl=zh-CN">Qing Li</a>
                       and <a href="https://scholar.google.cz/citations?user=SQ9UbHIAAAAJ&hl=zh-CN&oi=ao">Wenqi Fan</a>.
+                      My current Cumulative GPA is <strong>3.60/4.00</strong>.
                     </p>
                     <p>I studied at <a href="https://www.scu.edu.cn">Sichuan University (SCU)</a> from 2020 to 2024,
                       where I majored in Computer Science & Technology. My
@@ -86,13 +115,19 @@
                 <td style="padding:20px;width:100%;vertical-align:middle">
                   <heading>Research Topics</heading>
                   <p>
-                    My research areas include <strong>recommendation systems(RS), large language models(LLM), computer
-                      vision(CV), and graph neural networks(GNN)</strong>.
+                    My research interests lie in <strong>large language models (LLMs), retrieval-augmented generation
+                      (RAG),
+                      and Recommender Systems (RecSys)</strong>. I focus on both <strong>theoretical
+                      foundations</strong> and
+                    practical applications of LLM-based systems.
+                  </p>
+                  <p>
                     My previous research was primarily focused on topics within computer vision, such as tampering
-                    detection and object recognition tasks.
-                    Currently, I am diving into the realms of large language models (LLM) and Retrieval Augument
-                    Generation (RAG) .
-                    </span>
+                    detection and object recognition tasks. I have contributed to the design of high-impact benchmarks,
+                    such as <strong>HiBench</strong>, and comprehensive surveys like <strong>WebAgents</strong>.
+                    My work has been published in <strong>top-tier conferences</strong>, including
+                    <strong>NeurIPS 2024</strong> (spotlight) and <strong>AAAI 2025</strong>, and has accumulated
+                    <strong>80+ citations</strong>, with an <strong>h-index of 4</strong>.
                   </p>
                 </td>
               </tr>
@@ -115,6 +150,15 @@
             <tbody>
               <tr>
                 <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
+                  <div>
+                    <p> <strong>🎤 2025-08-07</strong> - Invited to give a talk "Understanding Hierarchical Data with
+                      Large Language Models: RAG, Structural Reasoning, and Future Directions" at <strong>KDD 2025
+                        Reasoning Day</strong> in Toronto, Canada! 🎙️</p>
+                  </div>
+                  <div>
+                    <p> <strong>🏅 2025-06-18</strong> - Achieved <strong>12th place globally</strong> in KDD Cup 2025 -
+                      Meta CRAG-MM Multimodal Retrieval Challenge among hundreds of international teams! 🌍</p>
+                  </div>
                   <div>
                     <p> <strong>🏆 2025-05-16</strong> - Our benchmark paper <a
                         href="https://arxiv.org/abs/2503.00912">HiBench</a> was accepted to <strong>KDD Benchmark
@@ -144,6 +188,7 @@
                   <!-- 剩余的新闻默认隐藏 -->
 
                   <div class="more-news">
+
                     <p> <strong>🌟 2025-01-15</strong> - <a
                         href="https://ojs.aaai.org/index.php/AAAI/article/view/33198">Mesoscopic Insights: Orchestrating
                         Multi-Scale & Hybrid Architecture for Image Manipulation Localization</a> was published in AAAI
@@ -153,6 +198,9 @@
                       published in NeurIPS 2024 Benchmark Tracks and received a Spotlight award.</p>
 
                     <p> <strong>🎓 2024-09-01</strong> - Beginning my pursuit of a PhD degree in Hong Kong PolyU.</p>
+
+                    <p> <strong>🎓 2024-06-26</strong> - Got <strong>Outstanding Graduate Award</strong> from Sichuan
+                      University and Sichuan Province! 🎉</p>
 
                     <p> <strong>🎓 2024-06-26</strong> - Graduated from Sichuan University with a bachelor's degree.</p>
 
@@ -165,7 +213,9 @@
                     <p> <strong>🔍 2024-05-24</strong> - Finished a paper <a
                         href="https://arxiv.org/abs/2406.12736"><strong>Beyond
                           Visual Appearances: Privacy-sensitive Objects Identification via Hybrid Graph
-                          Reasoning</strong></a> </p>
+                          Reasoning</strong></a> </p <p> <strong>📚 2023-08-01</strong> - Participated in <strong>NUS
+                      Summer School</strong> research
+                    program at National University of Singapore, completed face recognition project! 🇸🇬</p>
                   </div>
 
                   <div style="text-align: center; margin-top: 20px;">
@@ -187,7 +237,7 @@
             <tbody>
               <tr>
                 <td style="padding:20px;width:100%;vertical-align:middle">
-                  <heading>Publications</heading>
+                  <heading>Selected Publications</heading>
                 </td>
               </tr>
             </tbody>
@@ -385,6 +435,30 @@
                   <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
                     <!-- <a href="under-review.html" id="AutoCost"> -->
 
+                    <papertitle>[ICONIP'23] TPTGAN: Two-Path Transformer-Based Generative Adversarial Network Using
+                      Joint Magnitude Masking and Complex Spectral Mapping for Speech Enhancement</papertitle>
+                    [<a href="https://link.springer.com/chapter/10.1007/978-981-99-8082-6_27">paper</a>]
+                    <br>
+                    Zhichao Liu, <b>Zhuohang Jiang</b>, Wanli Luo, Xiaochen Ma, Ahmed Alhammadi, Jizhe Zhou
+
+                    <br>
+                    <font color='gray'>
+                      This paper presents TPTGAN, a novel two-path transformer-based generative adversarial network for
+                      speech enhancement. The method combines joint magnitude masking and complex spectral mapping to
+                      effectively suppress noise while preserving speech quality. Published in ICONIP 2023 (CCF-C).
+                    </font>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table
+              style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+              <tbody>
+                <tr>
+                  <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
+                    <!-- <a href="under-review.html" id="AutoCost"> -->
+
                     <papertitle>IML-ViT: Benchmarking Image Manipulation Localization by Vision Transformer</papertitle>
                     [<a href="https://arxiv.org/abs/2307.14863">arxiv</a>]
                     <br>
@@ -440,30 +514,6 @@
                 </tr>
               </tbody>
             </table>
-            <table
-              style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-              <tbody>
-                <tr>
-                  <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
-                    <!-- <a href="under-review.html" id="AutoCost"> -->
-                    <papertitle>Contour‑Aware Contrastive Learning for Image Manipulation Localization</papertitle>
-                    <br>
-                    Qin Li, Chunfang Yu, <b>Zhuohang Jiang</b>, AND Jizhe Zhou
-                    <br>
-                    <font color='gray'>We propose a novel Contour‑aware Contrastive Learning Network (CaCL‑Net) based on
-                      the encoder‑decoder architecture. On the encoder side,
-                      since the contour is foremost concerned in IML, we consider the image patches sampled along the
-                      manipulation contour are the hard examples
-                      and set them as the anchor. The patches of pure tampered and authentic pixels are set as positives
-                      and negatives respectively to conduct
-                      contrastive learning. The decoder then manages to specify the manipulated regions and restores the
-                      explicit contours of the manipulations
-                      through the proposed Contour Binary Cross‑Entropy (CBCE) loss.
-                    </font>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
           </div>
 
           <div style="text-align: center; margin-top: 20px;">
@@ -501,78 +551,140 @@
           <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
             <tbody>
               <tr>
-                <td>
-                  <heading class="">Research Projects</heading>
+                <td style="padding:20px;width:100%;vertical-align:middle">
+                  <heading>Selected Projects</heading>
                 </td>
               </tr>
             </tbody>
           </table>
+
           <table
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
               <tr>
                 <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
-                  <!-- <a href="under-review.html" id="AutoCost"> -->
-
-                  <papertitle>Research on Scene Graph Structure Learning Method for Private Object Detection
-                  </papertitle>
-
+                  <papertitle>HiBench: Benchmark for Hierarchical Reasoning</papertitle>
+                  [<a href="https://arxiv.org/abs/2503.00912">arXiv</a>] [<a
+                    href="https://github.com/jzzzzh/HiBench">GitHub</a>] [<a
+                    href="https://huggingface.co/datasets/zhuohang/HiBench">Hugging Face</a>]
                   <br>
-                  Advisor: Jizhe Zhou
+                  <strong>First Author & Team Leader</strong> • <em>KDD 2025 Benchmark Track</em> • 2025
                   <br>
-                  <strong> Participate as an intern</strong>
-                  <br>
-                  <em>National Natural Science Foundation of China </em>,&nbsp;2024&nbsp;
-                  <br>
-                  <font color='gray'>The privacy-sensitive object detection problem reauires the model to locate private
-                    objects in bounding boxes on images or videos. Research on privacy-sensitive object detection has
-                    imnortant value for personal-privacyprotection. Privacy-sensitive ob ject detection is actually a
-                    scene reasoning problem. However existing privacy-sensitive oh iect detection methods are all
-                    basedon the object detection framework.Due to the lack of scene reasoning ability,existing methods
-                    suffer from detection accuracy,generalizability,and interpretability.This project intends to build a
-                    set of privacy-sensitive objectdetection methods with scene reasoning capability through scene
-                    graphs. Unlikeother tasks, privacy-sensitive object detection requires a non-parametric scenegraph
-                    structure to keep the graph sparse，dynamic，and interpretable.Therefore,this project correspondingly
-                    proposes the scene graph structure learning methods.By studying 1) the distillation method of the
-                    graph structure to sparse the scenegraph，2) the transferring method between the scene graphs of
-                    different frames tomake the scene graph dynamic，3) the privacy-rule reasoning method based on
-                    thescene graph structure，solves the problem of scene graph generation with thenon-parametric graph
-                    structure， builds a new privacy-sensitive object detectionframework based on scene reasoning， break
-                    the bottlenecks of privacy-sensitiveobject detection methods in accuracy，generalizability,and
-                    interpretability.Thisprivacy-sensitive object detection framework also enriched the theoretical
-                    framework and application scenarios of neural networks.</font>
+                  <font color='gray'>
+                    Designed and developed the first comprehensive benchmark for evaluating LLMs' capability on
+                    hierarchical structure reasoning.
+                    The benchmark encompasses six representative scenarios with 39,519 queries across varying
+                    hierarchical complexity.
+                    <strong>Key contributions:</strong> (1) Led the architectural design and implementation of the
+                    evaluation framework,
+                    (2) Coordinated a multi-institutional team across different time zones, (3) Open-sourced the
+                    complete toolkit
+                    including dataset, evaluation metrics, and baseline implementations. The benchmark has been accepted
+                    as an
+                    <strong>oral presentation</strong> at KDD 2025 and is being adopted by multiple research groups for
+                    hierarchical reasoning evaluation.
+                  </font>
                 </td>
               </tr>
             </tbody>
           </table>
+
           <table
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
               <tr>
                 <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
-                  <!-- <a href="under-review.html" id="AutoCost"> -->
+                  <papertitle>Meta CRAG-MM: Multimodal Retrieval Challenge</papertitle>
+                  <br>
+                  <strong>Team Leader</strong> • <em>KDD Cup 2025</em> • 2025
+                  <br>
+                  <font color='gray'>
+                    Led a team to achieve <strong>12th place globally</strong> among hundreds of international teams in
+                    the Meta CRAG-MM
+                    Multimodal Retrieval Challenge. <strong>Key contributions:</strong> (1) Designed novel multimodal
+                    fusion architectures
+                    combining vision and language understanding, (2) Implemented efficient retrieval-augmented
+                    generation pipelines,
+                    (3) Coordinated team efforts in model development, hyperparameter optimization, and submission
+                    strategies.
+                    The challenge focused on developing AI systems capable of understanding and retrieving information
+                    from
+                    multimodal content, which aligns with current trends in large multimodal models.
+                  </font>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-                  <papertitle>Intelligent control and full life feedforward deduction technology through pre planning
-                    and post evaluation</papertitle>
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
+                  <papertitle>IMDL-BenCo: Benchmark for Image Manipulation Detection & Localization</papertitle>
+                  [<a href="https://arxiv.org/abs/2406.10580">arXiv</a>] [<a
+                    href="https://github.com/scu-zjz/IMDLBenCo">GitHub</a>]
+                  <br>
+                  <strong>Co-First Author</strong> • <em>NeurIPS 2024 Benchmark Track — Spotlight</em> • 2024
+                  <br>
+                  <font color='gray'>
+                    Developed the first comprehensive benchmark and codebase for Image Manipulation Detection &
+                    Localization (IMDL).
+                    <strong>Key contributions:</strong> (1) Implemented GPU-accelerated evaluation metrics for fair and
+                    efficient comparison,
+                    (2) Designed modular codebase architecture enabling easy customization and extension, (3)
+                    Co-authored the manuscript
+                    that received a <strong>Spotlight Award</strong> at NeurIPS 2024. The benchmark includes 8
+                    state-of-the-art models,
+                    15 evaluation metrics, and comprehensive robustness evaluation protocols, significantly advancing
+                    the field's
+                    standardization and reproducibility.
+                  </font>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
+
+          <hr
+            style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #ccc, transparent); width: 100%; margin: 20px 0;">
+
+          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+            <tbody>
+              <tr>
+                <td style="padding:20px;width:100%;vertical-align:middle">
+                  <heading>Invited Talks</heading>
+                </td>
+              </tr>
+              <tr>
+            </tbody>
+          </table>
+
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
+                  <papertitle>Understanding Hierarchical Data with Large Language Models: RAG, Structural Reasoning, and
+                    Future Directions</papertitle>
                   <br>
-                  Advisor: Jizhe Zhou
+                  <strong>Invited Talks</strong> • <em>Reasoning Day @ KDD 2025</em> • Toronto, ON, Canada • Aug 2025
                   <br>
-                  <strong> Participate as an intern</strong>
-                  <br>
-                  <em>National Key R&D
-                    Program of China</em>,&nbsp;2023&nbsp;
-                  <br>
-                  <font color='gray'>This topic proposes to adopt the scheme of "first completing information, then path
-                    reasoning". Specifically, this sub project intends to improve the initial network diagram based on
-                    the data base established in previous projects and further consider the frequency of common
-                    occurrence of impact factors. Then, based on the external knowledge causal information completion
-                    method of remote supervision, the network graph is again completed and cleaned, and then a path
-                    reasoning algorithm based on depth first traversal of the graph is used to achieve feedforward
-                    reasoning. Finally, a human-computer interactive network information verification method based on
-                    uncertainty reasoning is used to revise the causal relationship in the network diagram again based
-                    on artificial feedback on the reasoning path, further improving the accuracy and recall rate of the
-                    path reasoning algorithm results.</font>
+                  <font color='gray'>
+                    Invited to deliver a presentation at the prestigious KDD 2025 Reasoning Day workshop.<br>
+                    The talk will explore cutting-edge developments in leveraging Large Language Models for hierarchical
+                    data understanding,<br>
+                    with particular focus on Retrieval-Augmented Generation (RAG) systems and structural reasoning
+                    capabilities.<br>
+                    <strong>Key topics:</strong><br>
+                    (1) Novel approaches to hierarchical data representation in LLM contexts,<br>
+                    (2) Integration of structural reasoning with retrieval-augmented generation,<br>
+                    (3) Future research directions in reasoning-enhanced AI systems,<br>
+                    (4) Practical applications and deployment considerations for hierarchical reasoning in real-world
+                    scenarios.<br>
+                    This invitation recognizes the impact of our HiBench work and positions our research at the
+                    forefront of LLM reasoning capabilities.
+                  </font>
                 </td>
               </tr>
             </tbody>
@@ -638,6 +750,32 @@
               <tr>
             </tbody>
           </table>
+
+
+
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:0px 20px 20px 20px;width:75%;vertical-align:middle">
+                  <b>National University of Singapore (NUS)</b>
+                  <br>
+                  <strong>Summer School Participant</strong> • Aug. 2023
+                  <br>
+                  • Participated in intensive research program at School of Computing
+                  <br>
+                  • Completed face recognition project using CNN-based feature extraction and similarity matching
+                  <br>
+                  • Gained international research experience and cross-cultural collaboration skills
+                  </br>
+                </td>
+                <td style="padding:0px 20px 0px 20px;width:10%;vertical-align:middle"><img src="images/nus.png"
+                    width="135" height="75"></td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+
           <table
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
@@ -645,10 +783,18 @@
                 <td style="padding:0px 20px 20px 20px;width:75%;vertical-align:middle">
                   <a href="http://dicalab.cn/"> DICALab</a>, <b>Sichuan University</b>
                   <br>
-                  Research Assistant • Sep. 2022 to Jun. 2024
+                  <strong>Research Assistant</strong> • Sep. 2022 to Jun. 2024
                   <br>
                   Advisor: <a href="https://scholar.google.com/citations?user=-cNWmJMAAAAJ&hl=zh-CN"> Prof. JiZhe
                     Zhou</a>
+                  <br>
+                  • Developed graph-based frameworks for privacy-sensitive object detection
+                  <br>
+                  • Participated in National Natural Science Foundation of China project
+                  <br>
+                  • Contributed to National Key R&D Program of China
+                  <br>
+                  • Co-authored multiple publications in top-tier conferences and journals
                   </br>
                 </td>
                 <td style="padding:0px 20px 0px 20px;width:8%;vertical-align:middle"><img src="images/DICA.png"
@@ -657,69 +803,87 @@
             </tbody>
           </table>
           <br>
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tbody>
-              <tr>
-                <td style="padding:0px 20px 20px 20px;width:75%;vertical-align:middle">
-                  <a href="https://github.com/covscript/covscript"> Covariant association</a>, <b>Sichuan University</b>
-                  <br>
-                  the president of the covariant association • Sep. 2022 to Jun. 2023
-                  <br>
-                  the Covariant association obtain at least <font color="red"><em><strong>400+</strong></em></font>
-                  members, in which communicate the technology of the
-                  computer science.
-                </td>
-                <td style="padding:0px 20px 0px 20px;width:10%;vertical-align:middle"><img src="images/covariant.jpg"
-                    width="75" height="75"></td>
-              </tr>
-            </tbody>
-          </table>
           <hr
             style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #ccc, transparent); width: 100%; margin: 20px 0;">
-          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+
+
+          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"
+            style="margin-bottom: 10px; table-layout: fixed;">
             <tbody>
               <tr>
-                <td style="padding:20px;width:100%;vertical-align:middle">
-                  <heading>Award</heading>
+                <td colspan="2" style="padding:20px 0 0px 0;width:100%;vertical-align:middle;text-align:left;">
+                  <heading>Selected Awards</heading>
                 </td>
               </tr>
-              <tr>
-            </tbody>
-          </table>
-          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-            <tbody>
-              <tr>
-                <td>
-                  <strong>Computer Design Competition</strong> China, 2023
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>KDD Cup 2025 — Meta CRAG-MM</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">Toronto, Canada, 2025</span>
                 </td>
-                <td style="width:10%;vertical-align:middle; width: 40%;">
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
+                  <strong>12th Place (Global)</strong>
+                </td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>NeurIPS 2024 — IMDL‑BenCo (Co‑first Author)</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">Vancouver, Canada, 2024</span>
+                </td>
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
+                  <strong>Spotlight Award</strong>
+                </td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>Outstanding Graduate</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">Sichuan University &amp; Sichuan Province, 2024</span>
+                </td>
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
+                  <strong>Top Achievement</strong>
+                </td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>Tencent Scholarship</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">Sichuan University, China, 2023</span>
+                </td>
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
+                  <strong>Top 2%</strong>
+                </td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>A-Level Certificate</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">Comprehensive Quality Evaluation, China, 2023</span>
+                </td>
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
+                  <strong>Excellence</strong>
+                </td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>Computer Design Competition</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">China, 2023</span>
+                </td>
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
                   <strong>Provincial First Prize</strong>
                 </td>
               </tr>
-            </tbody>
-          </table>
-
-          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-            <tbody>
-              <tr>
-                <td>
-                  <strong>Comprehensive First Class Scholarship</strong> Sichuan University, Sichuan, China, 2022
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>Comprehensive First Class Scholarship</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">Sichuan University, Sichuan, China, 2022</span>
                 </td>
-                <td style="width:10%;vertical-align:middle; width: 40%;">
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
                   <strong>Top 1%</strong>
                 </td>
               </tr>
-            </tbody>
-          </table>
-
-          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-            <tbody>
               <tr>
-                <td>
-                  <strong>Outstanding students of Sichuan University</strong> Sichuan University, Sichuan, China, 2022
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>Outstanding Students of Sichuan University</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">Sichuan University, Sichuan, China, 2022</span>
                 </td>
-                <td style="width:10%;vertical-align:middle; width: 40%;">
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
                   <strong>Top 5%</strong>
                 </td>
               </tr>
@@ -734,9 +898,37 @@
           <hr
             style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #ccc, transparent); width: 100%; margin: 20px 0;">
 
+          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"
+            style="margin-bottom: 10px; table-layout: fixed;">
+            <tbody>
+              <tr>
+                <td colspan="2" style="padding:20px 0 0px 0;width:100%;vertical-align:middle;text-align:left;">
+                  <heading>Professional Service</heading>
+                </td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>Conference & Journal Reviewer</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">2023-2025</span>
+                </td>
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
+                  <strong>TIP, CVPR, NeurIPS, KDD</strong>
+                </td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>Teaching Assistant</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">The Hong Kong Polytechnic University (PolyU)</span>
+                </td>
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
+                  <strong>Artificial Intelligence (COMP4431)<br>NLP Practicum (COMP5423)</strong>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-
-
+          <hr
+            style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #ccc, transparent); width: 100%; margin: 20px 0;">
 
           <div style="text-align: center;">
             <a href="https://clustrmaps.com/site/1buac" title="Visit tracker">
@@ -749,7 +941,7 @@
               <tr>
                 <td style="padding:20px">
                   <div style="float:left;">
-                    Updated at Apr. 2025
+                    Updated at Jul. 2025
                   </div>
                   <div style="float:right;">
                     Thanks <a href="https://jonbarron.info">Jon Barron</a> for this amazing template
