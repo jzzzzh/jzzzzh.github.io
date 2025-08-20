@@ -43,12 +43,118 @@
       text-align: left !important;
       padding-left: 0 !important;
     }
+
+    /* 语言切换按钮样式 */
+    .language-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
+    }
+
+    .lang-btn {
+      padding: 8px 15px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .lang-btn:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    .lang-btn.active {
+      background-color: #28a745;
+    }
+
+    /* 深色模式样式 */
+    .dark-mode {
+      background-color: #1a1a1a !important;
+      color: #e0e0e0 !important;
+    }
+
+    .dark-mode table {
+      background-color: #1a1a1a !important;
+      color: #e0e0e0 !important;
+    }
+
+    .dark-mode td {
+      background-color: #1a1a1a !important;
+      color: #e0e0e0 !important;
+    }
+
+    .dark-mode heading {
+      color: #ffffff !important;
+    }
+
+    .dark-mode papertitle {
+      color: #ffffff !important;
+    }
+
+    .dark-mode a {
+      color: #66b3ff !important;
+    }
+
+    .dark-mode a:hover {
+      color: #99ccff !important;
+    }
+
+    .dark-mode hr {
+      background: linear-gradient(to right, transparent, #555, transparent) !important;
+    }
+
+    .dark-mode .lang-btn {
+      background-color: #333 !important;
+      color: #e0e0e0 !important;
+    }
+
+    .dark-mode .lang-btn:hover {
+      background-color: #555 !important;
+    }
+
+    .dark-mode .lang-btn.active {
+      background-color: #28a745 !important;
+    }
+
+    /* 模式切换动画 */
+    body {
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    /* 隐藏/显示语言内容 */
+    .lang-content {
+      display: block;
+    }
+
+    .lang-content.hidden {
+      display: none;
+    }
+
+    /* 确保表格行元素的语言切换正常工作 */
+    tr.lang-content {
+      display: table-row;
+    }
+
+    tr.lang-content.hidden {
+      display: none;
+    }
   </style>
 </head>
 
-
-
 <body>
+  <!-- 语言切换按钮 -->
+  <div class="language-toggle">
+    <button class="lang-btn active" onclick="switchLanguage('en')" id="en-btn">English</button>
+    <button class="lang-btn" onclick="switchLanguage('zh')" id="zh-btn">中文</button>
+  </div>
+
   <table
     style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tbody>
@@ -61,32 +167,59 @@
                 <td style="padding:2.5%;width:63%;vertical-align:middle">
                   <p style="text-align:center">
                   <div class="wow animate__animated animate__fadeInDown" style="font-size: 2.5em; font-weight: bold;">
-                    <name>Zhuohang Jiang</name>
+                    <name>
+                      <span class="lang-content lang-en">Zhuohang Jiang</span>
+                      <span class="lang-content lang-zh hidden">蒋卓航</span>
+                    </name>
                   </div>
 
                   </p>
                   <div>
-                    <p>I am currently pursuing a PhD degree at the <strong> <a href="https://www.polyu.edu.hk/">Hong
-                          Kong Polytechnic University</a></strong>. My supervisors are <a
-                        href="https://scholar.google.cz/citations?user=D1LEg-YAAAAJ&hl=zh-CN">Qing Li</a>
-                      and <a href="https://scholar.google.cz/citations?user=SQ9UbHIAAAAJ&hl=zh-CN&oi=ao">Wenqi Fan</a>.
-                      My current Cumulative GPA is <strong>3.60/4.00</strong>.
-                    </p>
-                    <p>I studied at <a href="https://www.scu.edu.cn">Sichuan University (SCU)</a> from 2020 to 2024,
-                      where I majored in Computer Science & Technology. My
-                      <strong> Major GPA (CS courses):
-                        3.79/4, 89.39/100;</strong>
-                      Overall GPA: 3.78/4, 89.25/100
-                    </p>
-                    <p>
-                      During my time at Sichuan University, I worked as a research assistant at
-                      <a href="http://www.machineilab.org/">MachineILab</a>
-                      from 2022 to 2024, advised by
-                      <a href="https://scholar.google.com/citations?user=-cNWmJMAAAAJ&hl=zh-CN">Prof. JiZhe Zhou</a>.
-                      I participated in one National Natural Science Foundation of China project and one National Key
-                      R&D
-                      Program of China.
-                    </p>
+                    <!-- 英文版本 -->
+                    <div class="lang-content lang-en">
+                      <p>I am currently pursuing a PhD degree at the <strong> <a href="https://www.polyu.edu.hk/">Hong
+                            Kong Polytechnic University</a></strong>. My supervisors are <a
+                          href="https://scholar.google.cz/citations?user=D1LEg-YAAAAJ&hl=zh-CN">Qing Li</a>
+                        and <a href="https://scholar.google.cz/citations?user=SQ9UbHIAAAAJ&hl=zh-CN&oi=ao">Wenqi
+                          Fan</a>.
+                        My current Cumulative GPA is <strong>3.60/4.00</strong>.
+                      </p>
+                      <p>I studied at <a href="https://www.scu.edu.cn">Sichuan University (SCU)</a> from 2020 to 2024,
+                        where I majored in Computer Science & Technology. My
+                        <strong> Major GPA (CS courses):
+                          3.79/4, 89.39/100;</strong>
+                        Overall GPA: 3.78/4, 89.25/100
+                      </p>
+                      <p>
+                        During my time at Sichuan University, I worked as a research assistant at
+                        <a href="http://www.machineilab.org/">MachineILab</a>
+                        from 2022 to 2024, advised by
+                        <a href="https://scholar.google.com/citations?user=-cNWmJMAAAAJ&hl=zh-CN">Prof. JiZhe Zhou</a>.
+                        I participated in one National Natural Science Foundation of China project and one National Key
+                        R&D
+                        Program of China.
+                      </p>
+                    </div>
+
+                    <!-- 中文版本 -->
+                    <div class="lang-content lang-zh hidden">
+                      <p>我目前在<strong><a href="https://www.polyu.edu.hk/">香港理工大学</a></strong>攻读博士学位。我的导师是<a
+                          href="https://scholar.google.cz/citations?user=D1LEg-YAAAAJ&hl=zh-CN">李青教授</a>
+                        和<a href="https://scholar.google.cz/citations?user=SQ9UbHIAAAAJ&hl=zh-CN&oi=ao">范文琦教授</a>。
+                        我目前的累计GPA是<strong>3.60/4.00</strong>。
+                      </p>
+                      <p>我于2020年至2024年在<a href="https://www.scu.edu.cn">四川大学</a>就读，主修计算机科学与技术专业。我的
+                        <strong>专业GPA（计算机课程）：3.79/4，89.39/100；</strong>
+                        综合GPA：3.78/4，89.25/100
+                      </p>
+                      <p>
+                        在四川大学期间，我于2022年至2024年在
+                        <a href="http://www.machineilab.org/">MachineILab</a>
+                        担任研究助理，导师是
+                        <a href="https://scholar.google.com/citations?user=-cNWmJMAAAAJ&hl=zh-CN">周吉喆教授</a>。
+                        我参与了一项国家自然科学基金项目和一项国家重点研发计划项目。
+                      </p>
+                    </div>
                   </div>
 
                   <p style="text-align:center">
@@ -113,22 +246,43 @@
             <tbody>
               <tr>
                 <td style="padding:20px;width:100%;vertical-align:middle">
-                  <heading>Research Topics</heading>
-                  <p>
-                    My research interests lie in <strong>large language models (LLMs), retrieval-augmented generation
-                      (RAG),
-                      and Recommender Systems (RecSys)</strong>. I focus on both <strong>theoretical
-                      foundations</strong> and
-                    practical applications of LLM-based systems.
-                  </p>
-                  <p>
-                    My previous research was primarily focused on topics within computer vision, such as tampering
-                    detection and object recognition tasks. I have contributed to the design of high-impact benchmarks,
-                    such as <strong>HiBench</strong>, and comprehensive surveys like <strong>WebAgents</strong>.
-                    My work has been published in <strong>top-tier conferences</strong>, including
-                    <strong>NeurIPS 2024</strong> (spotlight) and <strong>AAAI 2025</strong>, and has accumulated
-                    <strong>80+ citations</strong>, with an <strong>h-index of 4</strong>.
-                  </p>
+                  <heading>
+                    <span class="lang-content lang-en">Research Topics</span>
+                    <span class="lang-content lang-zh hidden">研究方向</span>
+                  </heading>
+                  <!-- 英文版本 -->
+                  <div class="lang-content lang-en">
+                    <p>
+                      My research interests lie in <strong>large language models (LLMs), retrieval-augmented generation
+                        (RAG),
+                        and Recommender Systems (RecSys)</strong>. I focus on both <strong>theoretical
+                        foundations</strong> and
+                      practical applications of LLM-based systems.
+                    </p>
+                    <p>
+                      My previous research was primarily focused on topics within computer vision, such as tampering
+                      detection and object recognition tasks. I have contributed to the design of high-impact
+                      benchmarks,
+                      such as <strong>HiBench</strong>, and comprehensive surveys like <strong>WebAgents</strong>.
+                      My work has been published in <strong>top-tier conferences</strong>, including
+                      <strong>NeurIPS 2024</strong> (spotlight) and <strong>AAAI 2025</strong>, and has accumulated
+                      <strong>100+ citations</strong>, with an <strong>h-index of 4</strong>.
+                    </p>
+                  </div>
+                  <!-- 中文版本 -->
+                  <div class="lang-content lang-zh hidden">
+                    <p>
+                      我的研究兴趣主要集中在<strong>大语言模型（LLMs）、检索增强生成（RAG）和推荐系统（RecSys）</strong>。
+                      我专注于基于LLM系统的<strong>理论基础</strong>和实际应用。
+                    </p>
+                    <p>
+                      我之前的研究主要集中在计算机视觉领域，如图像篡改检测和目标识别任务。我为高影响力基准测试的设计做出了贡献，
+                      如<strong>HiBench</strong>，以及综合性调研如<strong>WebAgents</strong>。
+                      我的工作发表在<strong>顶级会议</strong>上，包括<strong>NeurIPS 2024</strong>（spotlight）和<strong>AAAI
+                        2025</strong>，
+                      累计获得<strong>100+引用</strong>，<strong>h指数为4</strong>。
+                    </p>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -140,7 +294,10 @@
             <tbody>
               <tr>
                 <td>
-                  <heading>News</heading>
+                  <heading>
+                    <span class="lang-content lang-en">News</span>
+                    <span class="lang-content lang-zh hidden">新闻动态</span>
+                  </heading>
                 </td>
               </tr>
             </tbody>
@@ -150,78 +307,153 @@
             <tbody>
               <tr>
                 <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
-                  <div>
-                    <p> <strong>🎤 2025-08-07</strong> - Invited to give a talk "Understanding Hierarchical Data with
-                      Large Language Models: RAG, Structural Reasoning, and Future Directions" at <strong>KDD 2025
-                        Reasoning Day</strong> in Toronto, Canada! 🎙️</p>
+                  <!-- 英文版本 -->
+                  <div class="lang-content lang-en">
+                    <div>
+                      <p> <strong>🏆 2025-08-20</strong> - Our work <strong><a
+                            href="https://arxiv.org/abs/2508.05197">QA-Dragon</a></strong> was accepted by <strong>KDD
+                          2025 Workshop for Multimodal Retrieval Augmented Generation</strong>.</p>
+                    </div>
+                    <div>
+                      <p> <strong>🎤 2025-08-07</strong> - Invited to give a talk "Understanding Hierarchical Data with
+                        Large Language Models: RAG, Structural Reasoning, and Future Directions" at <strong>KDD 2025
+                          Reasoning Day</strong> in Toronto, Canada! 🎙️</p>
+                    </div>
+                    <div>
+                      <p> <strong>🏅 2025-06-18</strong> - Achieved <strong>12th place globally</strong> in KDD Cup 2025
+                        -
+                        Meta CRAG-MM Multimodal Retrieval Challenge among hundreds of international teams! 🌍</p>
+                    </div>
+                    <div>
+                      <p> <strong>🏆 2025-05-16</strong> - Our benchmark paper <a
+                          href="https://arxiv.org/abs/2503.00912">HiBench</a> was accepted to <strong>KDD Benchmark
+                          Track</strong>! 🎉</p>
+                    </div>
+                    <div>
+                      <p> <strong>🎉 2025-05-07</strong> - Our survey paper <a href="https://arxiv.org/abs/2503.23350">A
+                          Survey
+                          of WebAgents: Towards Next-Generation AI Agents for Web Automation with Large Foundation
+                          Models</a> was accepted to <strong>KDD Tutorial Track</strong>! 🎊</p>
+                    </div>
+                    <div>
+                      <p> <strong>📜 2025-03-30</strong> - Completed the survey paper <a
+                          href="https://arxiv.org/abs/2503.23350">A Survey of WebAgents: Towards Next-Generation AI
+                          Agents
+                          for Web Automation with Large Foundation Models</a>.</p>
+                    </div>
+                    <div>
+                      <p> <strong>📘 2025-03-01</strong> - Completed the <a
+                          href="https://arxiv.org/abs/2503.00912">HiBench</a> paper and released the code and dataset on
+                        <a href="https://github.com/jzzzzh/HiBench">GitHub</a> and
+                        <a href="https://huggingface.co/datasets/zhuohang/HiBench">Hugging Face</a>.
+                      </p>
+                    </div>
+
+                    <!-- 剩余的新闻默认隐藏 -->
+
+                    <div class="more-news">
+
+                      <p> <strong>🌟 2025-01-15</strong> - <a
+                          href="https://ojs.aaai.org/index.php/AAAI/article/view/33198">Mesoscopic Insights:
+                          Orchestrating
+                          Multi-Scale & Hybrid Architecture for Image Manipulation Localization</a> was published in
+                        AAAI
+                        2025.</p>
+
+                      <p> <strong>🏆 2024-12-01</strong> - <a href="https://arxiv.org/abs/2406.10580">IMDL-BenCo </a>was
+                        published in NeurIPS 2024 Benchmark Tracks and received a Spotlight award.</p>
+
+                      <p> <strong>🎓 2024-09-01</strong> - Beginning my pursuit of a PhD degree in Hong Kong PolyU.</p>
+
+                      <p> <strong>🎓 2024-06-26</strong> - Got <strong>Outstanding Graduate Award</strong> from Sichuan
+                        University and Sichuan Province! 🎉</p>
+
+                      <p> <strong>🎓 2024-06-26</strong> - Graduated from Sichuan University with a bachelor's degree.
+                      </p>
+
+                      <p> <strong>🛠️ 2024-06-12</strong> - Completed the co-work project <a
+                          href="https://github.com/scu-zjz/IMDLBenCo"> IMDLBenCo</a> and finished a paper
+                        <a href="https://arxiv.org/abs/2406.10580"><strong>IMDL-BenCo: A Comprehensive Benchmark and
+                            Codebase for Image Manipulation Detection & Localization</strong></a>
+                      </p>
+
+                      <p> <strong>🔍 2024-05-24</strong> - Finished a paper <a
+                          href="https://arxiv.org/abs/2406.12736"><strong>Beyond
+                            Visual Appearances: Privacy-sensitive Objects Identification via Hybrid Graph
+                            Reasoning</strong></a> </p <p> <strong>📚 2023-08-01</strong> - Participated in <strong>NUS
+                        Summer School</strong> research
+                      program at National University of Singapore, completed face recognition project! 🇸🇬</p>
+                    </div>
                   </div>
-                  <div>
-                    <p> <strong>🏅 2025-06-18</strong> - Achieved <strong>12th place globally</strong> in KDD Cup 2025 -
-                      Meta CRAG-MM Multimodal Retrieval Challenge among hundreds of international teams! 🌍</p>
-                  </div>
-                  <div>
-                    <p> <strong>🏆 2025-05-16</strong> - Our benchmark paper <a
-                        href="https://arxiv.org/abs/2503.00912">HiBench</a> was accepted to <strong>KDD Benchmark
-                        Track</strong>! 🎉</p>
-                  </div>
-                  <div>
-                    <p> <strong>🎉 2025-05-07</strong> - Our survey paper <a href="https://arxiv.org/abs/2503.23350">A
-                        Survey
-                        of WebAgents: Towards Next-Generation AI Agents for Web Automation with Large Foundation
-                        Models</a> was accepted to <strong>KDD Tutorial Track</strong>! 🎊</p>
-                  </div>
-                  <div>
-                    <p> <strong>📜 2025-03-30</strong> - Completed the survey paper <a
-                        href="https://arxiv.org/abs/2503.23350">A Survey of WebAgents: Towards Next-Generation AI Agents
-                        for Web Automation with Large Foundation Models</a>.</p>
-                  </div>
-                  <div>
-                    <p> <strong>📘 2025-03-01</strong> - Completed the <a
-                        href="https://arxiv.org/abs/2503.00912">HiBench</a> paper and released the code and dataset on
-                      <a href="https://github.com/jzzzzh/HiBench">GitHub</a> and
-                      <a href="https://huggingface.co/datasets/zhuohang/HiBench">Hugging Face</a>.
-                    </p>
-                  </div>
 
+                  <!-- 中文版本 -->
+                  <div class="lang-content lang-zh hidden">
+                    <div>
+                      <p> <strong>🏆 2025-08-20</strong> - 我们的工作 <strong><a
+                            href="https://arxiv.org/abs/2508.05197">QA-Dragon</a></strong> 被<strong>KDD
+                          2025多模态检索增强生成研讨会</strong>接收。</p>
+                    </div>
+                    <div>
+                      <p> <strong>🎤 2025-08-07</strong> - 受邀在加拿大多伦多<strong>KDD
+                          2025推理日</strong>做题为"用大语言模型理解层次化数据：RAG、结构推理与未来方向"的报告！🎙️</p>
+                    </div>
+                    <div>
+                      <p> <strong>🏅 2025-06-18</strong> - 在KDD Cup 2025 - Meta
+                        CRAG-MM多模态检索挑战赛中，在数百个国际团队中取得<strong>全球第12名</strong>的成绩！🌍</p>
+                    </div>
+                    <div>
+                      <p> <strong>🏆 2025-05-16</strong> - 我们的基准测试论文<a
+                          href="https://arxiv.org/abs/2503.00912">HiBench</a>被<strong>KDD基准测试赛道</strong>接收！🎉</p>
+                    </div>
+                    <div>
+                      <p> <strong>🎉 2025-05-07</strong> - 我们的调研论文<a
+                          href="https://arxiv.org/abs/2503.23350">网络智能体调研：基于大型基础模型的下一代网络自动化AI智能体</a>被<strong>KDD教程赛道</strong>接收！🎊
+                      </p>
+                    </div>
+                    <div>
+                      <p> <strong>📜 2025-03-30</strong> - 完成调研论文<a
+                          href="https://arxiv.org/abs/2503.23350">网络智能体调研：基于大型基础模型的下一代网络自动化AI智能体</a>。</p>
+                    </div>
+                    <div>
+                      <p> <strong>📘 2025-03-01</strong> - 完成<a href="https://arxiv.org/abs/2503.00912">HiBench</a>论文，并在
+                        <a href="https://github.com/jzzzzh/HiBench">GitHub</a>和
+                        <a href="https://huggingface.co/datasets/zhuohang/HiBench">Hugging Face</a>上发布代码和数据集。
+                      </p>
+                    </div>
 
+                    <!-- 剩余的新闻默认隐藏 -->
 
-                  <!-- 剩余的新闻默认隐藏 -->
+                    <div class="more-news">
 
-                  <div class="more-news">
+                      <p> <strong>🌟 2025-01-15</strong> - <a
+                          href="https://ojs.aaai.org/index.php/AAAI/article/view/33198">中观洞察：面向图像操作定位的多尺度混合架构编排</a>在AAAI
+                        2025上发表。</p>
 
-                    <p> <strong>🌟 2025-01-15</strong> - <a
-                        href="https://ojs.aaai.org/index.php/AAAI/article/view/33198">Mesoscopic Insights: Orchestrating
-                        Multi-Scale & Hybrid Architecture for Image Manipulation Localization</a> was published in AAAI
-                      2025.</p>
+                      <p> <strong>🏆 2024-12-01</strong> - <a
+                          href="https://arxiv.org/abs/2406.10580">IMDL-BenCo</a>在NeurIPS 2024基准测试赛道发表并获得Spotlight奖。</p>
 
-                    <p> <strong>🏆 2024-12-01</strong> - <a href="https://arxiv.org/abs/2406.10580">IMDL-BenCo </a>was
-                      published in NeurIPS 2024 Benchmark Tracks and received a Spotlight award.</p>
+                      <p> <strong>🎓 2024-09-01</strong> - 开始在香港理工大学攻读博士学位。</p>
 
-                    <p> <strong>🎓 2024-09-01</strong> - Beginning my pursuit of a PhD degree in Hong Kong PolyU.</p>
+                      <p> <strong>🎓 2024-06-26</strong> - 获得四川大学和四川省<strong>优秀毕业生</strong>称号！🎉</p>
 
-                    <p> <strong>🎓 2024-06-26</strong> - Got <strong>Outstanding Graduate Award</strong> from Sichuan
-                      University and Sichuan Province! 🎉</p>
+                      <p> <strong>🎓 2024-06-26</strong> - 从四川大学获得学士学位。</p>
 
-                    <p> <strong>🎓 2024-06-26</strong> - Graduated from Sichuan University with a bachelor's degree.</p>
+                      <p> <strong>🛠️ 2024-06-12</strong> - 完成合作项目<a
+                          href="https://github.com/scu-zjz/IMDLBenCo">IMDLBenCo</a>并完成论文
+                        <a href="https://arxiv.org/abs/2406.10580"><strong>IMDL-BenCo：图像操作检测与定位的综合基准测试和代码库</strong></a>
+                      </p>
 
-                    <p> <strong>🛠️ 2024-06-12</strong> - Completed the co-work project <a
-                        href="https://github.com/scu-zjz/IMDLBenCo"> IMDLBenCo</a> and finished a paper
-                      <a href="https://arxiv.org/abs/2406.10580"><strong>IMDL-BenCo: A Comprehensive Benchmark and
-                          Codebase for Image Manipulation Detection & Localization</strong></a>
-                    </p>
-
-                    <p> <strong>🔍 2024-05-24</strong> - Finished a paper <a
-                        href="https://arxiv.org/abs/2406.12736"><strong>Beyond
-                          Visual Appearances: Privacy-sensitive Objects Identification via Hybrid Graph
-                          Reasoning</strong></a> </p <p> <strong>📚 2023-08-01</strong> - Participated in <strong>NUS
-                      Summer School</strong> research
-                    program at National University of Singapore, completed face recognition project! 🇸🇬</p>
+                      <p> <strong>🔍 2024-05-24</strong> - 完成论文<a
+                          href="https://arxiv.org/abs/2406.12736"><strong>超越视觉外观：基于混合图推理的隐私敏感对象识别</strong></a></p>
+                      <p> <strong>📚 2023-08-01</strong> - 参加新加坡国立大学<strong>暑期学校</strong>研究项目，完成人脸识别项目！🇸🇬</p>
+                    </div>
                   </div>
 
                   <div style="text-align: center; margin-top: 20px;">
                     <button id="expand-btn" onclick="showMoreNews()" class="hvr-grow"
                       style="padding: 10px 20px; font-size: 16px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                      More News
+                      <span class="lang-content lang-en">More News</span>
+                      <span class="lang-content lang-zh hidden">更多新闻</span>
                     </button>
                   </div>
                   </div>
@@ -237,7 +469,45 @@
             <tbody>
               <tr>
                 <td style="padding:20px;width:100%;vertical-align:middle">
-                  <heading>Selected Publications</heading>
+                  <heading>
+                    <span class="lang-content lang-en">Selected Publications</span>
+                    <span class="lang-content lang-zh hidden">主要论文发表</span>
+                  </heading>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
+                  <papertitle>[KDD'25 Workshop] QA‑Dragon: Query‑Aware Dynamic RAG System for Knowledge‑Intensive Visual
+                    Question Answering</papertitle>
+                  <br>
+                  <b>Zhuohang Jiang*</b>, Pangjing Wu*, Xu Yuan*, Wenqi Fan, Qing Li
+                  <br>
+                  <img src="https://img.shields.io/badge/CCF_A-KDD-1f77b4?style=flat-square" alt="CCF-A">
+                  <a href="https://arxiv.org/abs/2508.05197"><img
+                      src="https://img.shields.io/badge/arXiv-2508.05197-b31b1b?style=flat-square" alt="arXiv"></a>
+                  <br>
+                  <font color='gray'>
+                    Retrieval-Augmented Generation (RAG) has been introduced to mitigate hallucinations in Multimodal
+                    Large Language Models (MLLMs) by incorporating external knowledge into the generation process, and
+                    it has become a widely adopted approach for knowledge-intensive Visual Question Answering (VQA).
+                    However, existing RAG methods typically retrieve from either text or images in isolation, limiting
+                    their ability to address complex queries that require multi-hop reasoning or up-to-date factual
+                    knowledge. To address this limitation, we propose QA-Dragon, a Query-Aware Dynamic RAG System for
+                    Knowledge-Intensive VQA. Specifically, QA-Dragon introduces a domain router to identify the query's
+                    subject domain for domain-specific reasoning, along with a search router that dynamically selects
+                    optimal retrieval strategies. By orchestrating both text and image search agents in a hybrid setup,
+                    our system supports multimodal, multi-turn, and multi-hop reasoning, enabling it to tackle complex
+                    VQA tasks effectively. We evaluate our QA-Dragon on the Meta CRAG-MM Challenge at KDD Cup 2025,
+                    where it significantly enhances the reasoning performance of base models under challenging
+                    scenarios. Our framework achieves substantial improvements in both answer accuracy and knowledge
+                    overlap scores, outperforming baselines by 5.06% on the single-source task, 6.35% on the
+                    multi-source task, and 5.03% on the multi-turn task.
+                  </font>
                 </td>
               </tr>
             </tbody>
@@ -551,7 +821,8 @@
           <div style="text-align: center; margin-top: 20px;">
             <button id="expand-publications-btn" onclick="togglePublications()" class="hvr-grow"
               style="padding: 10px 20px; font-size: 16px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">
-              More Publications
+              <span class="lang-content lang-en">More Publications</span>
+              <span class="lang-content lang-zh hidden">更多论文</span>
             </button>
           </div>
           </div>
@@ -565,13 +836,21 @@
                   morePublications.style.display = 'block';
                   button.classList.remove('hvr-grow');
                   button.classList.add('hvr-shrink');
-                  button.textContent = 'Less Publications';
+                  // 更新按钮文本 - 支持多语言
+                  const enText = button.querySelector('.lang-en');
+                  const zhText = button.querySelector('.lang-zh');
+                  if (enText) enText.textContent = 'Less Publications';
+                  if (zhText) zhText.textContent = '收起论文';
                   morePublications.classList.add('magictime', 'puffIn');
                 } else {
                   morePublications.style.display = 'none';
                   button.classList.remove('hvr-shrink');
                   button.classList.add('hvr-grow');
-                  button.textContent = 'More Publications';
+                  // 更新按钮文本 - 支持多语言
+                  const enText = button.querySelector('.lang-en');
+                  const zhText = button.querySelector('.lang-zh');
+                  if (enText) enText.textContent = 'More Publications';
+                  if (zhText) zhText.textContent = '更多论文';
                 }
               });
             }
@@ -584,7 +863,10 @@
             <tbody>
               <tr>
                 <td style="padding:20px;width:100%;vertical-align:middle">
-                  <heading>Selected Projects</heading>
+                  <heading>
+                    <span class="lang-content lang-en">Selected Projects</span>
+                    <span class="lang-content lang-zh hidden">主要项目</span>
+                  </heading>
                 </td>
               </tr>
             </tbody>
@@ -595,7 +877,10 @@
             <tbody>
               <tr>
                 <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
-                  <papertitle>HiBench: Benchmark for Hierarchical Reasoning</papertitle>
+                  <papertitle>
+                    <span class="lang-content lang-en">HiBench: Benchmark for Hierarchical Reasoning</span>
+                    <span class="lang-content lang-zh hidden">HiBench：层次化推理基准</span>
+                  </papertitle>
                   <br>
                   <strong>First Author & Team Leader</strong> • <em>KDD 2025 Benchmark Track</em> • 2025
                   <br>
@@ -608,20 +893,37 @@
                       src="https://img.shields.io/badge/Hugging%20Face-Dataset-yellow?style=flat-square&logo=huggingface"
                       alt="Hugging Face"></a>
                   <br>
-                  <font color='gray'>
-                    Designed and developed the first comprehensive benchmark for evaluating LLMs' capability on
-                    hierarchical structure reasoning.
-                    The benchmark encompasses six representative scenarios with 39,519 queries across varying
-                    hierarchical complexity.
-                    <strong>Key contributions:</strong> (1) Led the architectural design and implementation of the
-                    evaluation framework,
-                    (2) Coordinated a multi-institutional team across different time zones, (3) Open-sourced the
-                    complete toolkit
-                    including dataset, evaluation metrics, and baseline implementations. The benchmark has been accepted
-                    as an
-                    <strong>oral presentation</strong> at KDD 2025 and is being adopted by multiple research groups for
-                    hierarchical reasoning evaluation.
-                  </font>
+                  <!-- 英文版本 -->
+                  <div class="lang-content lang-en">
+                    <font color='gray'>
+                      Designed and developed the first comprehensive benchmark for evaluating LLMs' capability on
+                      hierarchical structure reasoning.
+                      The benchmark encompasses six representative scenarios with 39,519 queries across varying
+                      hierarchical complexity.
+                      <strong>Key contributions:</strong> (1) Led the architectural design and implementation of the
+                      evaluation framework,
+                      (2) Coordinated a multi-institutional team across different time zones, (3) Open-sourced the
+                      complete toolkit
+                      including dataset, evaluation metrics, and baseline implementations. The benchmark has been
+                      accepted
+                      as an
+                      <strong>oral presentation</strong> at KDD 2025 and is being adopted by multiple research groups
+                      for
+                      hierarchical reasoning evaluation.
+                    </font>
+                  </div>
+
+                  <!-- 中文版本 -->
+                  <div class="lang-content lang-zh hidden">
+                    <font color='gray'>
+                      设计并开发了首个用于评估大语言模型层次化结构推理能力的综合基准。
+                      该基准涵盖6个代表性场景，包含39,519个不同层次复杂度的查询。
+                      <strong>主要贡献：</strong> (1) 领导了评估框架的架构设计和实现，
+                      (2) 协调了跨时区的多机构团队，(3) 开源了完整的工具包，
+                      包括数据集、评估指标和基线实现。该基准已被KDD 2025接收为
+                      <strong>口头报告</strong>，正被多个研究团队采用进行层次推理评估。
+                    </font>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -632,23 +934,42 @@
             <tbody>
               <tr>
                 <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
-                  <papertitle>Meta CRAG-MM: Multimodal Retrieval Challenge</papertitle>
+                  <papertitle>
+                    <span class="lang-content lang-en">Meta CRAG-MM: Multimodal Retrieval Challenge</span>
+                    <span class="lang-content lang-zh hidden">Meta CRAG-MM：多模态检索挑战</span>
+                  </papertitle>
                   <br>
                   <strong>Team Leader</strong> • <em>KDD Cup 2025</em> • 2025
                   <br>
-                  <font color='gray'>
-                    Led a team to achieve <strong>12th place globally</strong> among hundreds of international teams in
-                    the Meta CRAG-MM
-                    Multimodal Retrieval Challenge. <strong>Key contributions:</strong> (1) Designed novel multimodal
-                    fusion architectures
-                    combining vision and language understanding, (2) Implemented efficient retrieval-augmented
-                    generation pipelines,
-                    (3) Coordinated team efforts in model development, hyperparameter optimization, and submission
-                    strategies.
-                    The challenge focused on developing AI systems capable of understanding and retrieving information
-                    from
-                    multimodal content, which aligns with current trends in large multimodal models.
-                  </font>
+                  <!-- 英文版本 -->
+                  <div class="lang-content lang-en">
+                    <font color='gray'>
+                      Led a team to achieve <strong>12th place globally</strong> among hundreds of international teams
+                      in
+                      the Meta CRAG-MM
+                      Multimodal Retrieval Challenge. <strong>Key contributions:</strong> (1) Designed novel multimodal
+                      fusion architectures
+                      combining vision and language understanding, (2) Implemented efficient retrieval-augmented
+                      generation pipelines,
+                      (3) Coordinated team efforts in model development, hyperparameter optimization, and submission
+                      strategies.
+                      The challenge focused on developing AI systems capable of understanding and retrieving information
+                      from
+                      multimodal content, which aligns with current trends in large multimodal models.
+                    </font>
+                  </div>
+
+                  <!-- 中文版本 -->
+                  <div class="lang-content lang-zh hidden">
+                    <font color='gray'>
+                      领导团队在Meta CRAG-MM多模态检索挑战赛中，在数百个国际团队中取得<strong>全球第12名</strong>的成绩。
+                      <strong>主要贡献：</strong> (1) 设计了结合视觉和语言理解的新颖多模态融合架构，
+                      (2) 实现了高效的检索增强生成管道，
+                      (3) 协调团队在模型开发、超参数优化和提交策略方面的努力。
+                      该挑战专注于开发能够理解和检索多模态内容信息的AI系统，
+                      这与大型多模态模型的当前趋势相符。
+                    </font>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -659,7 +980,11 @@
             <tbody>
               <tr>
                 <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
-                  <papertitle>IMDL-BenCo: Benchmark for Image Manipulation Detection & Localization</papertitle>
+                  <papertitle>
+                    <span class="lang-content lang-en">IMDL-BenCo: Benchmark for Image Manipulation Detection &
+                      Localization</span>
+                    <span class="lang-content lang-zh hidden">IMDL-BenCo：图像操作检测与定位基准</span>
+                  </papertitle>
                   <br>
                   <strong>Co-First Author</strong> • <em>NeurIPS 2024 Benchmark Track — Spotlight</em> • 2024
                   <br>
@@ -669,19 +994,35 @@
                       src="https://img.shields.io/badge/GitHub-IMDLBenCo-181717?style=flat-square&logo=github"
                       alt="GitHub"></a>
                   <br>
-                  <font color='gray'>
-                    Developed the first comprehensive benchmark and codebase for Image Manipulation Detection &
-                    Localization (IMDL).
-                    <strong>Key contributions:</strong> (1) Implemented GPU-accelerated evaluation metrics for fair and
-                    efficient comparison,
-                    (2) Designed modular codebase architecture enabling easy customization and extension, (3)
-                    Co-authored the manuscript
-                    that received a <strong>Spotlight Award</strong> at NeurIPS 2024. The benchmark includes 8
-                    state-of-the-art models,
-                    15 evaluation metrics, and comprehensive robustness evaluation protocols, significantly advancing
-                    the field's
-                    standardization and reproducibility.
-                  </font>
+                  <!-- 英文版本 -->
+                  <div class="lang-content lang-en">
+                    <font color='gray'>
+                      Developed the first comprehensive benchmark and codebase for Image Manipulation Detection &
+                      Localization (IMDL).
+                      <strong>Key contributions:</strong> (1) Implemented GPU-accelerated evaluation metrics for fair
+                      and
+                      efficient comparison,
+                      (2) Designed modular codebase architecture enabling easy customization and extension, (3)
+                      Co-authored the manuscript
+                      that received a <strong>Spotlight Award</strong> at NeurIPS 2024. The benchmark includes 8
+                      state-of-the-art models,
+                      15 evaluation metrics, and comprehensive robustness evaluation protocols, significantly advancing
+                      the field's
+                      standardization and reproducibility.
+                    </font>
+                  </div>
+
+                  <!-- 中文版本 -->
+                  <div class="lang-content lang-zh hidden">
+                    <font color='gray'>
+                      开发了首个用于图像操作检测与定位（IMDL）的综合基准和代码库。
+                      <strong>主要贡献：</strong> (1) 实现了GPU加速的评估指标，实现公平高效的比较，
+                      (2) 设计了模块化代码库架构，便于定制和扩展，(3)
+                      合著了获得NeurIPS 2024 <strong>Spotlight奖</strong>的手稿。该基准包含8个最先进的模型、
+                      15个评估指标和全面的鲁棒性评估协议，显著推进了该领域的
+                      标准化和可重现性。
+                    </font>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -695,7 +1036,10 @@
             <tbody>
               <tr>
                 <td style="padding:20px;width:100%;vertical-align:middle">
-                  <heading>Invited Talks</heading>
+                  <heading>
+                    <span class="lang-content lang-en">Invited Talks</span>
+                    <span class="lang-content lang-zh hidden">特邀报告</span>
+                  </heading>
                 </td>
               </tr>
               <tr>
@@ -707,26 +1051,49 @@
             <tbody>
               <tr>
                 <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
-                  <papertitle>Understanding Hierarchical Data with Large Language Models: RAG, Structural Reasoning, and
-                    Future Directions</papertitle>
+                  <papertitle>
+                    <span class="lang-content lang-en">Understanding Hierarchical Data with Large Language Models: RAG,
+                      Structural Reasoning, and Future Directions</span>
+                    <span class="lang-content lang-zh hidden">用大语言模型理解层次化数据：RAG、结构推理与未来方向</span>
+                  </papertitle>
                   <br>
                   <strong>Invited Talks</strong> • <em>Reasoning Day @ KDD 2025</em> • Toronto, ON, Canada • Aug 2025
                   <br>
-                  <font color='gray'>
-                    Invited to deliver a presentation at the prestigious KDD 2025 Reasoning Day workshop.<br>
-                    The talk will explore cutting-edge developments in leveraging Large Language Models for hierarchical
-                    data understanding,<br>
-                    with particular focus on Retrieval-Augmented Generation (RAG) systems and structural reasoning
-                    capabilities.<br>
-                    <strong>Key topics:</strong><br>
-                    (1) Novel approaches to hierarchical data representation in LLM contexts,<br>
-                    (2) Integration of structural reasoning with retrieval-augmented generation,<br>
-                    (3) Future research directions in reasoning-enhanced AI systems,<br>
-                    (4) Practical applications and deployment considerations for hierarchical reasoning in real-world
-                    scenarios.<br>
-                    This invitation recognizes the impact of our HiBench work and positions our research at the
-                    forefront of LLM reasoning capabilities.
-                  </font>
+                  <!-- 英文版本 -->
+                  <div class="lang-content lang-en">
+                    <font color='gray'>
+                      Invited to deliver a presentation at the prestigious KDD 2025 Reasoning Day workshop.<br>
+                      The talk will explore cutting-edge developments in leveraging Large Language Models for
+                      hierarchical
+                      data understanding,<br>
+                      with particular focus on Retrieval-Augmented Generation (RAG) systems and structural reasoning
+                      capabilities.<br>
+                      <strong>Key topics:</strong><br>
+                      (1) Novel approaches to hierarchical data representation in LLM contexts,<br>
+                      (2) Integration of structural reasoning with retrieval-augmented generation,<br>
+                      (3) Future research directions in reasoning-enhanced AI systems,<br>
+                      (4) Practical applications and deployment considerations for hierarchical reasoning in real-world
+                      scenarios.<br>
+                      This invitation recognizes the impact of our HiBench work and positions our research at the
+                      forefront of LLM reasoning capabilities.
+                    </font>
+                  </div>
+
+                  <!-- 中文版本 -->
+                  <div class="lang-content lang-zh hidden">
+                    <font color='gray'>
+                      受邀在享有盛誉的KDD 2025推理日研讨会上发表演讲。<br>
+                      该报告将探讨利用大语言模型进行层次化数据理解的前沿发展，<br>
+                      特别关注检索增强生成（RAG）系统和结构推理能力。<br>
+                      <strong>主要议题：</strong><br>
+                      (1) 在LLM语境下层次化数据表示的新颖方法，<br>
+                      (2) 结构推理与检索增强生成的集成，<br>
+                      (3) 推理增强AI系统的未来研究方向，<br>
+                      (4) 在现实场景中层次推理的实际应用和部署考虑。<br>
+                      这一邀请认可了我们HiBench工作的影响力，并将我们的研究置于
+                      LLM推理能力的前沿。
+                    </font>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -739,45 +1106,85 @@
             <tbody>
               <tr>
                 <td style="padding:20px;width:100%;vertical-align:middle">
-                  <heading>Education</heading>
+                  <heading>
+                    <span class="lang-content lang-en">Education</span>
+                    <span class="lang-content lang-zh hidden">教育背景</span>
+                  </heading>
                 </td>
               </tr>
               <tr>
             </tbody>
           </table>
 
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tbody>
-              <tr>
-                <td style="padding:0px 20px 20px 20px;width:75%;vertical-align:middle">
-                  <b>Sichuan University</b>, Chengdu, Sichuan, China
-                  <br>
-                  B.E. in Computer Science and Technology • Sep. 2020 to Jun. 2024
-                  </br>
-                </td>
-                <td style="padding:0px 20px 0px 20px;width:10%;vertical-align:middle"><img
-                    src="images/SichuanUniversityLOGO.png" width="75" height="75"></td>
-              </tr>
-            </tbody>
-          </table>
-          <br>
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tbody>
-              <tr>
-                <td style="padding:0px 20px 20px 20px;width:75%;vertical-align:middle">
-                  <b>Hong Kong Polytechnic University</b>, Hongkong, China
-                  <br>
-                  PHD. in Computer Science and Technology • Sep. 2024 to Present
-                  </br>
-                </td>
-                <td style="padding:0px 20px 0px 20px;width:10%;vertical-align:middle"><img src="images/polyu.jpg"
-                    width="75" height="75"></td>
-              </tr>
-            </tbody>
+          <!-- 英文版本 -->
+          <div class="lang-content lang-en">
+            <table
+              style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+              <tbody>
+                <tr>
+                  <td style="padding:0px 20px 20px 20px;width:75%;vertical-align:middle">
+                    <b>Sichuan University</b>, Chengdu, Sichuan, China
+                    <br>
+                    B.E. in Computer Science and Technology • Sep. 2020 to Jun. 2024
+                    </br>
+                  </td>
+                  <td style="padding:0px 20px 0px 20px;width:10%;vertical-align:middle"><img
+                      src="images/SichuanUniversityLOGO.png" width="75" height="75"></td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <table
+              style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+              <tbody>
+                <tr>
+                  <td style="padding:0px 20px 20px 20px;width:75%;vertical-align:middle">
+                    <b>Hong Kong Polytechnic University</b>, Hongkong, China
+                    <br>
+                    PHD. in Computer Science and Technology • Sep. 2024 to Present
+                    </br>
+                  </td>
+                  <td style="padding:0px 20px 0px 20px;width:10%;vertical-align:middle"><img src="images/polyu.jpg"
+                      width="75" height="75"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-          </table>
+          <!-- 中文版本 -->
+          <div class="lang-content lang-zh hidden">
+            <table
+              style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+              <tbody>
+                <tr>
+                  <td style="padding:0px 20px 20px 20px;width:75%;vertical-align:middle">
+                    <b>四川大学</b>，成都，四川，中国
+                    <br>
+                    计算机科学与技术学士 • 2020年9月至2024年6月
+                    </br>
+                  </td>
+                  <td style="padding:0px 20px 0px 20px;width:10%;vertical-align:middle"><img
+                      src="images/SichuanUniversityLOGO.png" width="75" height="75"></td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <table
+              style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+              <tbody>
+                <tr>
+                  <td style="padding:0px 20px 20px 20px;width:75%;vertical-align:middle">
+                    <b>香港理工大学</b>，香港，中国
+                    <br>
+                    计算机科学与技术博士 • 2024年9月至今
+                    </br>
+                  </td>
+                  <td style="padding:0px 20px 0px 20px;width:10%;vertical-align:middle"><img src="images/polyu.jpg"
+                      width="75" height="75"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <hr
             style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #ccc, transparent); width: 100%; margin: 20px 0;">
@@ -786,7 +1193,10 @@
             <tbody>
               <tr>
                 <td style="padding:20px;width:100%;vertical-align:middle">
-                  <heading>Experience</heading>
+                  <heading>
+                    <span class="lang-content lang-en">Experience</span>
+                    <span class="lang-content lang-zh hidden">工作经历</span>
+                  </heading>
                 </td>
               </tr>
               <tr>
@@ -795,55 +1205,110 @@
 
 
 
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tbody>
-              <tr>
-                <td style="padding:0px 20px 20px 20px;width:75%;vertical-align:middle">
-                  <b>National University of Singapore (NUS)</b>
-                  <br>
-                  <strong>Summer School Participant</strong> • Aug. 2023
-                  <br>
-                  • Participated in intensive research program at School of Computing
-                  <br>
-                  • Completed face recognition project using CNN-based feature extraction and similarity matching
-                  <br>
-                  • Gained international research experience and cross-cultural collaboration skills
-                  </br>
-                </td>
-                <td style="padding:0px 20px 0px 20px;width:10%;vertical-align:middle"><img src="images/nus.png"
-                    width="135" height="75"></td>
-              </tr>
-            </tbody>
-          </table>
-          <br>
+          <!-- 英文版本 -->
+          <div class="lang-content lang-en">
+            <table
+              style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+              <tbody>
+                <tr>
+                  <td style="padding:0px 20px 20px 20px;width:75%;vertical-align:middle">
+                    <b>National University of Singapore (NUS)</b>
+                    <br>
+                    <strong>Summer School Participant</strong> • Aug. 2023
+                    <br>
+                    • Participated in intensive research program at School of Computing
+                    <br>
+                    • Completed face recognition project using CNN-based feature extraction and similarity matching
+                    <br>
+                    • Gained international research experience and cross-cultural collaboration skills
+                    </br>
+                  </td>
+                  <td style="padding:0px 20px 0px 20px;width:10%;vertical-align:middle"><img src="images/nus.png"
+                      width="135" height="75"></td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
 
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tbody>
-              <tr>
-                <td style="padding:0px 20px 20px 20px;width:75%;vertical-align:middle">
-                  <a href="http://dicalab.cn/"> DICALab</a>, <b>Sichuan University</b>
-                  <br>
-                  <strong>Research Assistant</strong> • Sep. 2022 to Jun. 2024
-                  <br>
-                  Advisor: <a href="https://scholar.google.com/citations?user=-cNWmJMAAAAJ&hl=zh-CN"> Prof. JiZhe
-                    Zhou</a>
-                  <br>
-                  • Developed graph-based frameworks for privacy-sensitive object detection
-                  <br>
-                  • Participated in National Natural Science Foundation of China project
-                  <br>
-                  • Contributed to National Key R&D Program of China
-                  <br>
-                  • Co-authored multiple publications in top-tier conferences and journals
-                  </br>
-                </td>
-                <td style="padding:0px 20px 0px 20px;width:8%;vertical-align:middle"><img src="images/DICA.png"
-                    width="75" height="75"></td>
-              </tr>
-            </tbody>
-          </table>
+            <table
+              style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+              <tbody>
+                <tr>
+                  <td style="padding:0px 20px 20px 20px;width:75%;vertical-align:middle">
+                    <a href="http://dicalab.cn/"> DICALab</a>, <b>Sichuan University</b>
+                    <br>
+                    <strong>Research Assistant</strong> • Sep. 2022 to Jun. 2024
+                    <br>
+                    Advisor: <a href="https://scholar.google.com/citations?user=-cNWmJMAAAAJ&hl=zh-CN"> Prof. JiZhe
+                      Zhou</a>
+                    <br>
+                    • Developed graph-based frameworks for privacy-sensitive object detection
+                    <br>
+                    • Participated in National Natural Science Foundation of China project
+                    <br>
+                    • Contributed to National Key R&D Program of China
+                    <br>
+                    • Co-authored multiple publications in top-tier conferences and journals
+                    </br>
+                  </td>
+                  <td style="padding:0px 20px 0px 20px;width:8%;vertical-align:middle"><img src="images/DICA.png"
+                      width="75" height="75"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 中文版本 -->
+          <div class="lang-content lang-zh hidden">
+            <table
+              style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+              <tbody>
+                <tr>
+                  <td style="padding:0px 20px 20px 20px;width:75%;vertical-align:middle">
+                    <b>新加坡国立大学 (NUS)</b>
+                    <br>
+                    <strong>暑期学校学员</strong> • 2023年8月
+                    <br>
+                    • 参与计算机学院的密集研究项目
+                    <br>
+                    • 完成基于CNN特征提取和相似度匹配的人脸识别项目
+                    <br>
+                    • 获得国际研究经验和跨文化合作技能
+                    </br>
+                  </td>
+                  <td style="padding:0px 20px 0px 20px;width:10%;vertical-align:middle"><img src="images/nus.png"
+                      width="135" height="75"></td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+
+            <table
+              style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+              <tbody>
+                <tr>
+                  <td style="padding:0px 20px 20px 20px;width:75%;vertical-align:middle">
+                    <a href="http://dicalab.cn/"> DICALab</a>, <b>四川大学</b>
+                    <br>
+                    <strong>研究助理</strong> • 2022年9月至2024年6月
+                    <br>
+                    导师：<a href="https://scholar.google.com/citations?user=-cNWmJMAAAAJ&hl=zh-CN"> 周吉喆教授</a>
+                    <br>
+                    • 开发用于隐私敏感对象检测的基于图的框架
+                    <br>
+                    • 参与国家自然科学基金项目
+                    <br>
+                    • 参与国家重点研发计划项目
+                    <br>
+                    • 在顶级会议和期刊上合著多篇论文
+                    </br>
+                  </td>
+                  <td style="padding:0px 20px 0px 20px;width:8%;vertical-align:middle"><img src="images/DICA.png"
+                      width="75" height="75"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <br>
           <hr
             style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #ccc, transparent); width: 100%; margin: 20px 0;">
@@ -854,10 +1319,14 @@
             <tbody>
               <tr>
                 <td colspan="2" style="padding:20px 0 0px 0;width:100%;vertical-align:middle;text-align:left;">
-                  <heading>Selected Awards</heading>
+                  <heading>
+                    <span class="lang-content lang-en">Selected Awards</span>
+                    <span class="lang-content lang-zh hidden">主要奖项</span>
+                  </heading>
                 </td>
               </tr>
-              <tr style="border-bottom:1px solid #eee;">
+              <!-- 英文版本 -->
+              <tr class="lang-content lang-en" style="border-bottom:1px solid #eee;">
                 <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
                   <strong>KDD Cup 2025 — Meta CRAG-MM</strong><br>
                   <span style="color: #666; font-size: 0.95em;">Toronto, Canada, 2025</span>
@@ -866,7 +1335,7 @@
                   <strong>12th Place (Global)</strong>
                 </td>
               </tr>
-              <tr style="border-bottom:1px solid #eee;">
+              <tr class="lang-content lang-en" style="border-bottom:1px solid #eee;">
                 <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
                   <strong>NeurIPS 2024 — IMDL‑BenCo (Co‑first Author)</strong><br>
                   <span style="color: #666; font-size: 0.95em;">Vancouver, Canada, 2024</span>
@@ -875,7 +1344,7 @@
                   <strong>Spotlight Award</strong>
                 </td>
               </tr>
-              <tr style="border-bottom:1px solid #eee;">
+              <tr class="lang-content lang-en" style="border-bottom:1px solid #eee;">
                 <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
                   <strong>Outstanding Graduate</strong><br>
                   <span style="color: #666; font-size: 0.95em;">Sichuan University &amp; Sichuan Province, 2024</span>
@@ -884,7 +1353,7 @@
                   <strong>Top Achievement</strong>
                 </td>
               </tr>
-              <tr style="border-bottom:1px solid #eee;">
+              <tr class="lang-content lang-en" style="border-bottom:1px solid #eee;">
                 <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
                   <strong>Tencent Scholarship</strong><br>
                   <span style="color: #666; font-size: 0.95em;">Sichuan University, China, 2023</span>
@@ -893,7 +1362,7 @@
                   <strong>Top 2%</strong>
                 </td>
               </tr>
-              <tr style="border-bottom:1px solid #eee;">
+              <tr class="lang-content lang-en" style="border-bottom:1px solid #eee;">
                 <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
                   <strong>A-Level Certificate</strong><br>
                   <span style="color: #666; font-size: 0.95em;">Comprehensive Quality Evaluation, China, 2023</span>
@@ -902,16 +1371,7 @@
                   <strong>Excellence</strong>
                 </td>
               </tr>
-              <tr style="border-bottom:1px solid #eee;">
-                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
-                  <strong>Computer Design Competition</strong><br>
-                  <span style="color: #666; font-size: 0.95em;">China, 2023</span>
-                </td>
-                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
-                  <strong>Provincial First Prize</strong>
-                </td>
-              </tr>
-              <tr style="border-bottom:1px solid #eee;">
+              <tr class="lang-content lang-en" style="border-bottom:1px solid #eee;">
                 <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
                   <strong>Comprehensive First Class Scholarship</strong><br>
                   <span style="color: #666; font-size: 0.95em;">Sichuan University, Sichuan, China, 2022</span>
@@ -920,7 +1380,7 @@
                   <strong>Top 1%</strong>
                 </td>
               </tr>
-              <tr>
+              <tr class="lang-content lang-en">
                 <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
                   <strong>Outstanding Students of Sichuan University</strong><br>
                   <span style="color: #666; font-size: 0.95em;">Sichuan University, Sichuan, China, 2022</span>
@@ -929,6 +1389,71 @@
                   <strong>Top 5%</strong>
                 </td>
               </tr>
+
+              <!-- 中文版本 -->
+              <tr class="lang-content lang-zh hidden" style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>KDD Cup 2025 — Meta CRAG-MM</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">加拿大多伦多，2025</span>
+                </td>
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
+                  <strong>全球第12名</strong>
+                </td>
+              </tr>
+              <tr class="lang-content lang-zh hidden" style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>NeurIPS 2024 — IMDL‑BenCo（共同第一作者）</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">加拿大温哥华，2024</span>
+                </td>
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
+                  <strong>Spotlight奖</strong>
+                </td>
+              </tr>
+              <tr class="lang-content lang-zh hidden" style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>优秀毕业生</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">四川大学 &amp; 四川省，2024</span>
+                </td>
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
+                  <strong>最高成就</strong>
+                </td>
+              </tr>
+              <tr class="lang-content lang-zh hidden" style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>腾讯奖学金</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">四川大学，中国，2023</span>
+                </td>
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
+                  <strong>前2%</strong>
+                </td>
+              </tr>
+              <tr class="lang-content lang-zh hidden" style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>A级证书</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">综合素质评价，中国，2023</span>
+                </td>
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
+                  <strong>优秀</strong>
+                </td>
+              </tr>
+              <tr class="lang-content lang-zh hidden" style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>综合一等奖学金</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">四川大学，四川，中国，2022</span>
+                </td>
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
+                  <strong>前1%</strong>
+                </td>
+              </tr>
+              <tr class="lang-content lang-zh hidden">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>四川大学优秀学生</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">四川大学，四川，中国，2022</span>
+                </td>
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
+                  <strong>前5%</strong>
+                </td>
+              </tr>
             </tbody>
           </table>
 
@@ -945,19 +1470,23 @@
             <tbody>
               <tr>
                 <td colspan="2" style="padding:20px 0 0px 0;width:100%;vertical-align:middle;text-align:left;">
-                  <heading>Professional Service</heading>
+                  <heading>
+                    <span class="lang-content lang-en">Professional Service</span>
+                    <span class="lang-content lang-zh hidden">专业服务</span>
+                  </heading>
                 </td>
               </tr>
-              <tr style="border-bottom:1px solid #eee;">
+              <!-- 英文版本 -->
+              <tr class="lang-content lang-en" style="border-bottom:1px solid #eee;">
                 <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
                   <strong>Conference & Journal Reviewer</strong><br>
                   <span style="color: #666; font-size: 0.95em;">2023-2025</span>
                 </td>
                 <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
-                  <strong>TIP, CVPR, NeurIPS, KDD</strong>
+                  <strong>TIP, ECCV, NeurIPS, KDD, AAAI, IoTJ,</strong>
                 </td>
               </tr>
-              <tr style="border-bottom:1px solid #eee;">
+              <tr class="lang-content lang-en" style="border-bottom:1px solid #eee;">
                 <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
                   <strong>Teaching Assistant</strong><br>
                   <span style="color: #666; font-size: 0.95em;">The Hong Kong Polytechnic University (PolyU)</span>
@@ -966,6 +1495,26 @@
                   <strong>Artificial Intelligence (COMP4431)<br>NLP Practicum (COMP5423)</strong>
                 </td>
               </tr>
+
+              <!-- 中文版本 -->
+              <tr class="lang-content lang-zh hidden" style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>会议和期刊审稿人</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">2023-2025</span>
+                </td>
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
+                  <strong>TIP, ECCV, NeurIPS, KDD, AAAI, IoTJ</strong>
+                </td>
+              </tr>
+              <tr class="lang-content lang-zh hidden" style="border-bottom:1px solid #eee;">
+                <td style="width:60%;vertical-align:middle;padding:10px 0;text-align:left;">
+                  <strong>教学助理</strong><br>
+                  <span style="color: #666; font-size: 0.95em;">香港理工大学</span>
+                </td>
+                <td style="width:40%;vertical-align:middle;padding:10px 0;text-align:right;">
+                  <strong>人工智能 (COMP4431)<br>自然语言处理实践 (COMP5423)</strong>
+                </td>
+              </tr>
             </tbody>
           </table>
 
@@ -977,10 +1526,14 @@
             <tbody>
               <tr>
                 <td colspan="2" style="padding:20px 0 0px 0;width:100%;vertical-align:middle;text-align:left;">
-                  <heading>Skills</heading>
+                  <heading>
+                    <span class="lang-content lang-en">Skills</span>
+                    <span class="lang-content lang-zh hidden">技能</span>
+                  </heading>
                 </td>
               </tr>
-              <tr>
+              <!-- 英文版本 -->
+              <tr class="lang-content lang-en">
                 <td style="width:30%;vertical-align:top;padding:10px 0;text-align:left;">
                   <strong>Research Topics</strong>
                 </td>
@@ -988,7 +1541,7 @@
                   Large Language Models (LLMs), Retrieval‑Augmented Generation (RAG), Recommender Systems (RecSys)
                 </td>
               </tr>
-              <tr>
+              <tr class="lang-content lang-en">
                 <td style="width:30%;vertical-align:top;padding:10px 0;text-align:left;">
                   <strong>Frameworks &amp; Tools</strong>
                 </td>
@@ -996,12 +1549,38 @@
                   PyTorch, Hugging Face, NumPy, Docker, Git, Anaconda
                 </td>
               </tr>
-              <tr>
+              <tr class="lang-content lang-en">
                 <td style="width:30%;vertical-align:top;padding:10px 0;text-align:left;">
                   <strong>Languages</strong>
                 </td>
                 <td style="width:70%;vertical-align:top;padding:10px 0;text-align:left;">
                   Mandarin (native), English (fluent, IELTS 6.5)
+                </td>
+              </tr>
+
+              <!-- 中文版本 -->
+              <tr class="lang-content lang-zh hidden">
+                <td style="width:30%;vertical-align:top;padding:10px 0;text-align:left;">
+                  <strong>研究方向</strong>
+                </td>
+                <td style="width:70%;vertical-align:top;padding:10px 0;text-align:left;">
+                  大语言模型 (LLMs)，检索增强生成 (RAG)，推荐系统 (RecSys)
+                </td>
+              </tr>
+              <tr class="lang-content lang-zh hidden">
+                <td style="width:30%;vertical-align:top;padding:10px 0;text-align:left;">
+                  <strong>框架和工具</strong>
+                </td>
+                <td style="width:70%;vertical-align:top;padding:10px 0;text-align:left;">
+                  PyTorch, Hugging Face, NumPy, Docker, Git, Anaconda
+                </td>
+              </tr>
+              <tr class="lang-content lang-zh hidden">
+                <td style="width:30%;vertical-align:top;padding:10px 0;text-align:left;">
+                  <strong>语言能力</strong>
+                </td>
+                <td style="width:70%;vertical-align:top;padding:10px 0;text-align:left;">
+                  中文（母语），英文（流利，雅思6.5）
                 </td>
               </tr>
             </tbody>
@@ -1021,7 +1600,7 @@
               <tr>
                 <td style="padding:20px">
                   <div style="float:left;">
-                    Updated at Jul. 2025
+                    Updated at Aug. 2025
                   </div>
                   <div style="float:right;">
                     Thanks <a href="https://jonbarron.info">Jon Barron</a> for this amazing template
@@ -1043,25 +1622,163 @@
 
 
     function showMoreNews() {
-      var moreNews = document.querySelector('.more-news');
       var button = document.getElementById('expand-btn');
+
+      // 确保只添加一次事件监听器
+      if (button.hasEventListener) return;
+      button.hasEventListener = true;
+
       button.addEventListener('click', function () {
-        if (moreNews.style.display === 'none') {
-          moreNews.style.display = 'block';
-          button.textContent = 'Less News';
+        // 获取所有的more-news元素
+        const allMoreNews = document.querySelectorAll('.more-news');
+
+        // 检查是否已展开（通过检查第一个more-news的display状态）
+        const isExpanded = allMoreNews[0].style.display === 'block';
+
+        if (!isExpanded) {
+          // 展开所有more-news区域
+          allMoreNews.forEach(moreNews => {
+            moreNews.style.display = 'block';
+            moreNews.classList.add('magictime', 'puffIn');
+          });
+
+          // 更新按钮文本 - 支持多语言
+          const enText = button.querySelector('.lang-en');
+          const zhText = button.querySelector('.lang-zh');
+          if (enText) enText.textContent = 'Less News';
+          if (zhText) zhText.textContent = '收起新闻';
           button.classList.remove('hvr-grow');
           button.classList.add('hvr-shrink');
-          moreNews.classList.add('magictime', 'puffIn');
         } else {
-          moreNews.style.display = 'none';
-          button.textContent = 'More News';
+          // 收起所有more-news区域
+          allMoreNews.forEach(moreNews => {
+            moreNews.style.display = 'none';
+          });
+
+          // 更新按钮文本 - 支持多语言
+          const enText = button.querySelector('.lang-en');
+          const zhText = button.querySelector('.lang-zh');
+          if (enText) enText.textContent = 'More News';
+          if (zhText) zhText.textContent = '更多新闻';
           button.classList.remove('hvr-shrink');
           button.classList.add('hvr-grow');
         }
       });
     }
 
+    // 语言切换功能
+    function switchLanguage(lang) {
+      const enBtn = document.getElementById('en-btn');
+      const zhBtn = document.getElementById('zh-btn');
+      const langContent = document.querySelectorAll('.lang-content');
+      const hiddenClass = 'hidden';
 
+      langContent.forEach(content => {
+        if (content.classList.contains(`lang-${lang}`)) {
+          content.classList.remove(hiddenClass);
+        } else {
+          content.classList.add(hiddenClass);
+        }
+      });
+
+      if (lang === 'en') {
+        enBtn.classList.add('active');
+        zhBtn.classList.remove('active');
+      } else {
+        zhBtn.classList.add('active');
+        enBtn.classList.remove('active');
+      }
+
+      // 保存语言选择到本地存储
+      localStorage.setItem('language', lang);
+    }
+
+    // 基于时间的自动模式切换
+    function setThemeBasedOnTime() {
+      const now = new Date();
+      const hour = now.getHours();
+      const themeToggle = document.getElementById('theme-toggle');
+
+      // 6:00-18:00 为白天模式，18:00-6:00 为夜间模式
+      const isNightTime = hour < 6 || hour >= 18;
+
+      if (isNightTime) {
+        document.body.classList.add('dark-mode');
+        if (themeToggle) themeToggle.textContent = '☀️';
+      } else {
+        document.body.classList.remove('dark-mode');
+        if (themeToggle) themeToggle.textContent = '🌙';
+      }
+
+      return isNightTime ? 'dark' : 'light';
+    }
+
+    // 手动切换主题
+    function toggleTheme() {
+      const isDark = document.body.classList.toggle('dark-mode');
+      const themeToggle = document.getElementById('theme-toggle');
+      themeToggle.textContent = isDark ? '☀️' : '🌙';
+
+      // 保存手动设置，覆盖自动模式
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      localStorage.setItem('themeAutoMode', 'false');
+    }
+
+    // 初始化页面
+    document.addEventListener('DOMContentLoaded', () => {
+      // 语言初始化
+      const savedLang = localStorage.getItem('language') || 'en';
+      switchLanguage(savedLang);
+
+      // 初始化more-news和more-publications区域为隐藏状态
+      const allMoreNews = document.querySelectorAll('.more-news');
+      allMoreNews.forEach(moreNews => {
+        moreNews.style.display = 'none';
+      });
+
+      const allMorePublications = document.querySelectorAll('.more-publications');
+      allMorePublications.forEach(morePubs => {
+        morePubs.style.display = 'none';
+      });
+
+      // 创建主题切换按钮
+      const themeToggle = document.createElement('button');
+      themeToggle.id = 'theme-toggle';
+      themeToggle.className = 'lang-btn';
+      themeToggle.style.position = 'fixed';
+      themeToggle.style.top = '20px';
+      themeToggle.style.right = '180px';
+      themeToggle.style.zIndex = '1000';
+      themeToggle.onclick = toggleTheme;
+      document.body.appendChild(themeToggle);
+
+      // 主题初始化
+      const savedTheme = localStorage.getItem('theme');
+      const isAutoMode = localStorage.getItem('themeAutoMode') !== 'false';
+
+      if (savedTheme && !isAutoMode) {
+        // 使用保存的手动设置
+        if (savedTheme === 'dark') {
+          document.body.classList.add('dark-mode');
+          themeToggle.textContent = '☀️';
+        } else {
+          document.body.classList.remove('dark-mode');
+          themeToggle.textContent = '🌙';
+        }
+      } else {
+        // 使用基于时间的自动模式
+        setThemeBasedOnTime();
+        localStorage.setItem('themeAutoMode', 'true');
+      }
+
+      // 每分钟检查一次时间变化（仅在自动模式下）
+      setInterval(() => {
+        const isAutoMode = localStorage.getItem('themeAutoMode') !== 'false';
+        if (isAutoMode) {
+          setThemeBasedOnTime();
+        }
+      }, 60000); // 每分钟检查一次
+    });
 
   </script>
 </body>
