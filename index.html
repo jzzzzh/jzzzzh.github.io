@@ -137,6 +137,14 @@
       display: none;
     }
 
+    .inline-lang-content {
+      display: inline;
+    }
+
+    .inline-lang-content.hidden {
+      display: none;
+    }
+
     /* 确保表格行元素的语言切换正常工作 */
     tr.lang-content {
       display: table-row;
@@ -224,7 +232,10 @@
 
                   <p style="text-align:center">
                     <a href="mailto:zhuohangjiang2002@gmail.com">Email</a> &nbsp/&nbsp
-                    <a href="data/ZhuohangJiang-CV.pdf">CV</a> &nbsp/&nbsp
+                    <span class="lang-content inline-lang-content lang-en"><a
+                        href="data/ZhuohangJiang-CV.pdf">CV</a></span>
+                    <span class="lang-content inline-lang-content lang-zh hidden"><a
+                        href="data/CV_zh.pdf">简历</a></span> &nbsp/&nbsp
                     <a href="https://scholar.google.cz/citations?hl=zh-CN&user=h3vEhrgAAAAJ">Google Scholar</a>
                     &nbsp/&nbsp
                     <a href="https://github.com/jzzzzh">Github</a>&nbsp
