@@ -311,6 +311,9 @@
                   <div class="lang-content lang-en">
                     <div>
                       <div>
+                        <p> <strong>🏆 2026-05-16</strong> - Our paper <strong>Atomic Intent Reasoning: Bringing LLM Semantics to Industrial Cross-Domain Recommendations</strong> was accepted as a presentation at the <strong>KDD 2026 Main Conference ADS Track</strong>! 🎉</p>
+                      </div>
+                      <div>
                         <p> <strong>🏆2026-04</strong> - Our paper <strong><a href="https://arxiv.org/abs/2501.06820">SUPERGLASSES</a></strong> was accepted by <strong>CVPR 2026 Findings</strong>! 🎉</p>
                       </div>
                       <div>
@@ -403,6 +406,7 @@
                   <!-- 中文版本 -->
                   <div class="lang-content lang-zh hidden">
                     <div>
+                      <p> <strong>🏆 2026-05-16</strong> - 我们的论文<strong>Atomic Intent Reasoning: Bringing LLM Semantics to Industrial Cross-Domain Recommendations</strong>被<strong>KDD 2026主会ADS Track</strong>接收为报告论文！🎉</p>
                       <p> <strong>🏆 2026-04</strong> - 我们的论文<strong><a href="https://arxiv.org/abs/2501.06820">SUPERGLASSES</a></strong>被<strong>CVPR 2026 Findings</strong>接收！🎉</p>
                       <p> <strong>💼 2024-10-01</strong> - 即将前往<strong>快手电商团队</strong>实习，开启新的实践之旅！</p>
                       <p> <strong>📝 2024-09-15</strong> - 担任 <strong>Frontiers in Artificial
@@ -501,6 +505,30 @@
             <tbody>
               <tr>
                 <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
+                  <papertitle>[KDD'26 ADS Track] Atomic Intent Reasoning: Bringing LLM Semantics to Industrial Cross-Domain Recommendations</papertitle>
+                  <br>
+                  <b>Zhuohang Jiang</b>, Yuxin Chen, Shijie Wang, Haohao Qu, Zhou Jindong, Wenqi Fan, Li Qing, Dongxu Liang, Jun Wang
+                  <br>
+                  <img src="https://img.shields.io/badge/CCF_A-KDD-1f77b4?style=flat-square" alt="CCF-A">
+                  <img src="https://img.shields.io/badge/KDD_2026-ADS_Track-2e8b57?style=flat-square" alt="KDD 2026 ADS Track">
+                  <br>
+                  <em>KDD 2026 ADS Track Cycle 2 Submission. Submitted Jan 14, 2026; modified Feb 9, 2026.</em>
+                  <br>
+                  <font color='gray'>
+                    We introduce AIR, an LLM-driven cross-domain recommendation framework that moves semantic reasoning
+                    offline and composes user intent representations efficiently online. AIR achieves about 400x
+                    inference acceleration, reaches state-of-the-art results on public benchmarks, and improves
+                    Kuaishou E-commerce online GMV by +3.446% in large-scale A/B testing.
+                  </font>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
                   <papertitle>[CVPR'26 Findings] SUPERGLASSES: Benchmarking Vision Language Models as Intelligent Agents for AI Smart Glasses</papertitle>
                   <br>
                   <b>Zhuohang Jiang*</b>, Xu Yuan*, Haohao Qu, Shanru Lin, Kanglong Liu, Wenqi Fan, Qing Li
@@ -510,7 +538,9 @@
                       src="https://img.shields.io/badge/arXiv-2501.06820-b31b1b?style=flat-square" alt="arXiv"></a>
                   <br>
                   <font color='gray'>
-                    The rapid advancement of AI-powered smart glasses, one of the hottest wearable devices, has unlocked new frontiers for multimodal interaction, with Visual Question Answering (VQA) over external knowledge sources emerging as a core application. Existing Vision Language Models (VLMs) adapted to smart glasses are typically trained and evaluated on traditional multimodal datasets; however, these datasets lack the variety and realism needed to reflect smart glasses usage scenarios and diverge from their specific challenges, where accurately identifying the object of interest must precede any external knowledge retrieval. To bridge this gap, we introduce SUPERGLASSES, the first comprehensive VQA benchmark built on real-world data entirely collected by smart glasses devices. SUPERGLASSES comprises 2,422 egocentric image-question pairs spanning 14 image domains and 8 query categories, enriched with full search trajectories and reasoning annotations. We evaluate 26 representative VLMs on this benchmark, revealing significant performance gaps. To address the limitations of existing models, we further propose SUPERLENS, a multimodal smart glasses agent that enables retrieval-augmented answer generation by integrating automatic object detection, query decoupling, and multimodal web search. Our agent achieves state-of-the-art performance, surpassing GPT-4o by 2.19 percent, and highlights the need for task-specific solutions in smart glasses VQA scenarios.
+                    SUPERGLASSES is a real-world smart-glasses VQA benchmark with 2,422 egocentric image-question pairs
+                    across 14 domains and 8 query types. We evaluate 26 VLMs and propose SUPERLENS, a multimodal RAG
+                    agent that surpasses GPT-4o by 2.19% on this setting.
                   </font>
                 </td>
               </tr>
@@ -531,21 +561,9 @@
                       src="https://img.shields.io/badge/arXiv-2508.05197-b31b1b?style=flat-square" alt="arXiv"></a>
                   <br>
                   <font color='gray'>
-                    Retrieval-Augmented Generation (RAG) has been introduced to mitigate hallucinations in Multimodal
-                    Large Language Models (MLLMs) by incorporating external knowledge into the generation process, and
-                    it has become a widely adopted approach for knowledge-intensive Visual Question Answering (VQA).
-                    However, existing RAG methods typically retrieve from either text or images in isolation, limiting
-                    their ability to address complex queries that require multi-hop reasoning or up-to-date factual
-                    knowledge. To address this limitation, we propose QA-Dragon, a Query-Aware Dynamic RAG System for
-                    Knowledge-Intensive VQA. Specifically, QA-Dragon introduces a domain router to identify the query's
-                    subject domain for domain-specific reasoning, along with a search router that dynamically selects
-                    optimal retrieval strategies. By orchestrating both text and image search agents in a hybrid setup,
-                    our system supports multimodal, multi-turn, and multi-hop reasoning, enabling it to tackle complex
-                    VQA tasks effectively. We evaluate our QA-Dragon on the Meta CRAG-MM Challenge at KDD Cup 2025,
-                    where it significantly enhances the reasoning performance of base models under challenging
-                    scenarios. Our framework achieves substantial improvements in both answer accuracy and knowledge
-                    overlap scores, outperforming baselines by 5.06% on the single-source task, 6.35% on the
-                    multi-source task, and 5.03% on the multi-turn task.
+                    QA-Dragon is a query-aware dynamic RAG system for knowledge-intensive VQA. By routing queries across
+                    domains and retrieval strategies, it supports multimodal, multi-turn, and multi-hop reasoning and
+                    improves Meta CRAG-MM Challenge performance by up to 6.35% over baselines.
                   </font>
                 </td>
               </tr>
@@ -568,23 +586,9 @@
                       src="https://img.shields.io/badge/arXiv-2503.23350-b31b1b?style=flat-square" alt="arXiv"></a>
                   <br>
                   <font color='gray'>
-                    With the advancement of web techniques, they have significantly revolutionized various aspects of
-                    people's lives. Despite the importance of the web, many tasks performed on it are repetitive and
-                    time-consuming, negatively impacting overall quality of life. To efficiently handle these tedious
-                    daily tasks, one of the most promising approaches is to advance autonomous agents based on
-                    Artificial Intelligence (AI) techniques, referred to as AI Agents, as they can operate continuously
-                    without fatigue or performance degradation. In the context of the web, leveraging AI Agents --
-                    termed WebAgents -- to automatically assist people in handling tedious daily tasks can dramatically
-                    enhance productivity and efficiency. Recently, Large Foundation Models (LFMs) containing billions of
-                    parameters have exhibited human-like language understanding and reasoning capabilities, showing
-                    proficiency in performing various complex tasks. This naturally raises the question: `Can LFMs be
-                    utilized to develop powerful AI Agents that automatically handle web tasks, providing significant
-                    convenience to users?' To fully explore the potential of LFMs, extensive research has emerged on
-                    WebAgents designed to complete daily web tasks according to user instructions, significantly
-                    enhancing the convenience of daily human life. In this survey, we comprehensively review existing
-                    research studies on WebAgents across three key aspects: architectures, training, and
-                    trustworthiness. Additionally, several promising directions for future research are explored to
-                    provide deeper insights.
+                    This survey reviews WebAgents powered by large foundation models, focusing on architectures,
+                    training methods, and trustworthiness. It organizes recent progress in web automation and outlines
+                    key directions for building more reliable autonomous web agents.
                   </font>
                 </td>
               </tr>
@@ -614,25 +618,10 @@
                       alt="Hugging Face"></a>
                   <br>
                   <font color='gray'>
-                    Structure reasoning is a fundamental capability of large language models (LLMs), enabling them to
-                    reason about structured commonsense and answer multi-hop questions. However, existing benchmarks for
-                    structure reasoning mainly focus on horizontal and coordinate structures (\emph{e.g.} graphs),
-                    overlooking the hierarchical relationships within them. Hierarchical structure reasoning is crucial
-                    for human cognition, particularly in memory organization and problem-solving. It also plays a key
-                    role in various real-world tasks, such as information extraction and decision-making. To address
-                    this gap, we propose HiBench, the first framework spanning from initial structure generation to
-                    final proficiency assessment, designed to benchmark the hierarchical reasoning capabilities of LLMs
-                    systematically. HiBench encompasses six representative scenarios, covering both fundamental and
-                    practical aspects, and consists of 30 tasks with varying hierarchical complexity, totaling 39,519
-                    queries. To evaluate LLMs comprehensively, we develop five capability dimensions that depict
-                    different facets of hierarchical structure understanding. Through extensive evaluation of 20 LLMs
-                    from 10 model families, we reveal key insights into their capabilities and limitations: 1) existing
-                    LLMs show proficiency in basic hierarchical reasoning tasks; 2) they still struggle with more
-                    complex structures and implicit hierarchical representations, especially in structural modification
-                    and textual reasoning. Based on these findings, we create a small yet well-designed instruction
-                    dataset, which enhances LLMs' performance on HiBench by an average of 88.84% (Llama-3.1-8B) and
-                    31.38% (Qwen2.5-7B) across all tasks. The HiBench dataset and toolkit are available here, this https
-                    URL, to encourage evaluation.
+                    HiBench is a benchmark for evaluating hierarchical structure reasoning in LLMs, covering 30 tasks
+                    and 39,519 queries across six scenarios. Experiments on 20 LLMs reveal strengths in basic hierarchy
+                    reasoning and limitations on complex or implicit structures; a compact instruction dataset further
+                    improves model performance.
                   </font>
                 </td>
               </tr>
@@ -654,21 +643,9 @@
                       src="https://img.shields.io/badge/arXiv-2412.13753-b31b1b?style=flat-square" alt="arXiv"></a>
                   <br>
                   <font color='gray'>
-                    The mesoscopic level serves as a bridge between the macroscopic and microscopic worlds, addressing
-                    gaps overlooked by both. Image manipulation localization (IML), a crucial technique to pursue truth
-                    from fake images, has long relied on low-level (microscopic-level) traces. However, in practice,
-                    most tampering aims to deceive the audience by altering image semantics. As a result, manipulation
-                    commonly occurs at the object level (macroscopic level), which is equally important as microscopic
-                    traces. Therefore, integrating these two levels into the mesoscopic level presents a new perspective
-                    for IML research. Inspired by this, our paper explores how to simultaneously construct mesoscopic
-                    representations of micro and macro information for IML and introduces the Mesorch architecture to
-                    orchestrate both. Specifically, this architecture i) combines Transformers and CNNs in parallel,
-                    with Transformers extracting macro information and CNNs capturing micro details, and ii) explores
-                    across different scales, assessing micro and macro information seamlessly. Additionally, based on
-                    the Mesorch architecture, the paper introduces two baseline models aimed at solving IML tasks
-                    through mesoscopic representation. Extensive experiments across four datasets have demonstrated that
-                    our models surpass the current state-of-the-art in terms of performance, computational complexity,
-                    and robustness.
+                    This work introduces Mesorch, a mesoscopic architecture for image manipulation localization that
+                    combines macro-level semantic cues with micro-level tampering traces. Across four datasets, the
+                    proposed models improve accuracy, efficiency, and robustness over prior methods.
                   </font>
                 </td>
               </tr>
@@ -697,28 +674,23 @@
                       alt="GitHub"></a>
                   <br>
                   <font color='gray'>
-                    A comprehensive benchmark is yet to be established in the Image Manipulation Detection &
-                    Localization (IMDL) field. The absence of such a benchmark leads to insufficient and misleading
-                    model evaluations, severely undermining the development of this field. However, the scarcity of
-                    open-sourced baseline models and inconsistent training and evaluation protocols make conducting
-                    rigorous experiments and faithful comparisons among IMDL models challenging. To address these
-                    challenges, we introduce IMDL-BenCo, the first comprehensive IMDL benchmark and modular codebase.
-                    IMDL-BenCo:i) decomposes the IMDL framework into standardized, reusable components and
-                    revises the model construction pipeline, improving coding efficiency and customization
-                    flexibility;ii) fully implements or incorporates training code for state-of-the-art models
-                    to establish a comprehensive IMDL benchmark; and iii) conducts deep analysis based on the
-                    established benchmark and codebase, offering new insights into IMDL model architecture, dataset
-                    characteristics, and evaluation standards. Specifically, IMDL-BenCo includes common processing
-                    algorithms, 8 state-of-the-art IMDL models (1 of which are reproduced from scratch), 2 sets of
-                    standard training and evaluation protocols, 15 GPU-accelerated evaluation metrics, and 3 kinds of
-                    robustness evaluation. This benchmark and codebase represent a significant leap forward in
-                    calibrating the current progress in the IMDL field and inspiring future breakthroughs.
+                    IMDL-BenCo is a comprehensive benchmark and modular codebase for image manipulation detection and
+                    localization. It standardizes training, evaluation, metrics, robustness tests, and eight strong
+                    baselines, enabling more reliable comparison across IMDL methods.
                   </font>
                 </td>
               </tr>
             </tbody>
           </table>
 
+
+
+
+
+
+
+          <div class="more-publications" style="display: none;">
+            <!-- Remaining publications go here -->
           <table
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
@@ -734,34 +706,15 @@
                   <a href="https://arxiv.org/abs/2406.12736"><img
                       src="https://img.shields.io/badge/arXiv-2406.12736-b31b1b?style=flat-square" alt="arXiv"></a>
                   <br>
-                  <b>Zhuohang Jiang*</b>, Bingkui Tong*, Xia Du, Ahmed Alhammadi, Jizhe Zhou
-
-                  <br>
                   <font color='gray'>
-                    To explicitly derive the objects' privacy class from the scene contexts, in this paper, we interpret
-                    the POI task as a visual reasoning task aimed at the privacy of each object in the scene. Following
-                    this interpretation, we propose the PrivacyGuard framework for POI. PrivacyGuard contains three
-                    stages. i) Structuring: an unstructured image is first converted into a structured, heterogeneous
-                    scene graph that embeds rich scene contexts. ii) Data Augmentation: a contextual perturbation
-                    oversampling strategy is proposed to create slightly perturbed privacy-sensitive objects in a scene
-                    graph, thereby balancing the skewed distribution of privacy classes. iii) Hybrid Graph Generation &
-                    Reasoning: the balanced, heterogeneous scene graph is then transformed into a hybrid graph by
-                    endowing it with extra "node-node" and "edge-edge" homogeneous paths. These homogeneous paths allow
-                    direct message passing between nodes or edges, thereby accelerating reasoning and facilitating the
-                    capturing of subtle context changes.
+                    PrivacyGuard formulates privacy-sensitive object identification as a visual reasoning problem over
+                    structured scene context. It builds heterogeneous scene graphs, balances privacy classes with
+                    contextual perturbation, and reasons over hybrid graph paths to capture subtle context changes.
                   </font>
                 </td>
               </tr>
             </tbody>
           </table>
-
-
-
-
-
-          <div class="more-publications" style="display: none;">
-            <!-- Remaining publications go here -->
-
             <table
               style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
               <tbody>
@@ -779,10 +732,9 @@
                         src="https://img.shields.io/badge/Paper-springer-2e8b57?style=flat-square" alt="Paper"></a>
                     <br>
                     <font color='gray'>
-                      In this paper, we propose a two-path transformer-based metric generative adversarial network
-                      (TPTGAN) for speech enhancement in the time-frequency domain. The generator consists of an
-                      encoder, a two-stage transformer module, a magnitude mask decoder and a complex spectrum decoder.
-                      Published in ICONIP 2023.
+                      TPTGAN is a two-path Transformer-based metric GAN for speech enhancement in the time-frequency
+                      domain. It jointly predicts magnitude masks and complex spectra to improve enhanced speech
+                      quality.
                     </font>
                   </td>
                 </tr>
@@ -804,15 +756,9 @@
                         src="https://img.shields.io/badge/arXiv-2307.14863-b31b1b?style=flat-square" alt="arXiv"></a>
                     <br>
                     <font color='gray'>
-                      Due to limited datasets, there is currently no pure ViT-based approach for IML to serve as a
-                      benchmark, and CNNs dominate the entire task. Nevertheless, CNNs suffer from weak long-range and
-                      non-semantic modeling. To bridge this gap, based on the fact that artifacts are sensitive to image
-                      resolution, amplified under multi-scale features, and massive at the manipulation border, we
-                      formulate the answer to the former question as building a ViT with high-resolution capacity,
-                      multi-scale feature extraction capability, and manipulation edge supervision that could converge
-                      with a small amount of data. We term this simple but effective ViT paradigm IML-ViT, which has
-                      significant potential to become a new benchmark for IML. Extensive experiments on five benchmark
-                      datasets verified our model outperforms the state-of-the-art manipulation localization methods.
+                      IML-ViT is a ViT-based benchmark model for image manipulation localization that combines
+                      high-resolution inputs, multi-scale features, and manipulation-edge supervision. It outperforms
+                      prior localization methods on five public datasets.
                     </font>
                   </td>
                 </tr>
@@ -835,22 +781,11 @@
                     <a href="https://arxiv.org/abs/2310.06525"><img
                         src="https://img.shields.io/badge/arXiv-2310.06525-b31b1b?style=flat-square" alt="arXiv"></a>
                     <br>
-                    <font color='gray'> This necessitates IML models to carry out a semantic understanding of the entire
-                      image. In this paper, we
-                      reformulate the IML task as a high‑level
-                      vision task that greatly benefits from low‑level features. We propose a method to enhance the
-                      Masked
-                      Autoencoder (MAE) by incorporating
-                      high‑resolution inputs and a perceptual loss supervision module, which we term Perceptual MAE
-                      (PMAE). While
-                      MAE has demonstrated an
-                      impressive understanding of object semantics, PMAE can also comprehend low‑level semantics with
-                      our
-                      proposed
-                      enhancements. This
-                      paradigm effectively unites the low‑level and high‑level features of the IML task and outperforms
-                      state‑of‑the‑art tampering localization methods
-                      on five publicly available datasets, as evidenced by extensive experiments.</font>
+                    <font color='gray'>
+                      Perceptual MAE enhances masked autoencoders for image manipulation localization with
+                      high-resolution inputs and perceptual supervision. The model combines high-level semantic
+                      understanding with low-level tampering cues and achieves strong results on five datasets.
+                    </font>
                   </td>
                 </tr>
               </tbody>
