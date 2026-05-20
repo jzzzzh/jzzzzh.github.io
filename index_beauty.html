@@ -75,14 +75,6 @@
       background-color: #28a745;
     }
 
-    #theme-toggle {
-      width: 39px;
-      min-width: 39px;
-      padding: 8px 0;
-      text-align: center;
-      line-height: 1;
-    }
-
     /* 深色模式样式 */
     .dark-mode {
       background-color: #1a1a1a !important;
@@ -163,20 +155,317 @@
       display: none;
     }
 
+    :root {
+      --apple-bg: #f7f8fa;
+      --apple-surface: #ffffff;
+      --apple-surface-solid: #ffffff;
+      --apple-text: #111827;
+      --apple-muted: #4b5563;
+      --apple-border: rgba(15, 23, 42, 0.12);
+      --apple-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      --apple-blue: #0b63ce;
+      --tech-line: rgba(11, 99, 206, 0.18);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+        var(--apple-bg);
+      background-size: 28px 28px, 28px 28px, auto;
+      color: var(--apple-text);
+      overflow-x: hidden;
+    }
+
+    body>table {
+      width: min(100%, 980px) !important;
+      max-width: 980px !important;
+      padding: 0 22px 48px;
+    }
+
+    body>table>tbody>tr>td {
+      padding: 0 !important;
+    }
+
+    heading {
+      display: block;
+      margin-top: 8px;
+      color: var(--apple-text);
+      font-size: 25px !important;
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    papertitle {
+      display: inline-block;
+      color: var(--apple-text);
+      font-size: 17px !important;
+      line-height: 1.35;
+    }
+
+    p,
+    td,
+    font {
+      line-height: 1.62;
+    }
+
+    a {
+      color: var(--apple-blue);
+      transition: color 180ms ease, opacity 180ms ease;
+    }
+
+    a:hover {
+      color: #005bb5;
+    }
+
+    .language-toggle {
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      border: 1px solid var(--apple-border);
+      border-radius: 12px;
+      background: var(--apple-surface);
+      box-shadow: var(--apple-shadow);
+    }
+
+    .lang-btn {
+      border-radius: 9px !important;
+      background: transparent !important;
+      color: var(--apple-text) !important;
+      font-weight: 700;
+      box-shadow: none;
+    }
+
+    .lang-btn.active {
+      background: var(--apple-text) !important;
+      color: white !important;
+    }
+
+    .apple-hero {
+      margin-top: 44px !important;
+      border: 1px solid var(--apple-border) !important;
+      border-top: 3px solid var(--apple-blue) !important;
+      border-radius: 18px;
+      background: var(--apple-surface);
+      box-shadow: var(--apple-shadow);
+      overflow: hidden;
+    }
+
+    .apple-hero img {
+      border-radius: 14px;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.14);
+    }
+
+    .apple-section-heading {
+      margin-top: 42px !important;
+      margin-bottom: 8px !important;
+    }
+
+    .apple-section-heading td {
+      padding: 12px 8px !important;
+      border-bottom: 1px solid var(--tech-line);
+    }
+
+    .apple-card {
+      margin: 12px 0 !important;
+      border: 1px solid var(--apple-border) !important;
+      border-left: 3px solid var(--tech-line) !important;
+      border-radius: 14px;
+      background: var(--apple-surface);
+      box-shadow: var(--apple-shadow);
+      overflow: hidden;
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    }
+
+    .apple-card::before,
+    .apple-hero::before {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(90deg, transparent, var(--apple-blue), transparent);
+      opacity: 0;
+      transform: translateX(-35%);
+      transition: opacity 520ms ease, transform 720ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .apple-card.apple-visible::before,
+    .apple-hero.apple-visible::before {
+      opacity: 0.34;
+      transform: translateX(0);
+    }
+
+    .apple-card:hover {
+      transform: translateY(-2px);
+      border-left-color: var(--apple-blue) !important;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.09);
+      background: var(--apple-surface-solid);
+    }
+
+    .apple-card>tbody>tr>td {
+      padding: 19px 22px !important;
+    }
+
+    .apple-divider {
+      opacity: 0;
+      margin: 26px 0 !important;
+    }
+
+    .apple-reveal {
+      opacity: 0;
+      transform: translate3d(0, 34px, 0) scale(0.992);
+      filter: none;
+      transition:
+        opacity 680ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        transform 680ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      transition-delay: var(--waterfall-delay, 0ms);
+      will-change: opacity, transform;
+    }
+
+    .apple-reveal.apple-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
     .site-footnote {
       margin: 18px auto 34px;
-      color: #777;
+      padding: 0 8px;
+      color: var(--apple-muted);
       font-size: 12px;
       line-height: 1.5;
       text-align: center;
-      opacity: 0.75;
+      opacity: 0.72;
     }
 
     .site-footnote a {
       color: inherit;
       text-decoration: underline;
-      text-decoration-color: rgba(119, 119, 119, 0.35);
+      text-decoration-color: rgba(107, 114, 128, 0.35);
       text-underline-offset: 3px;
+    }
+
+    .more-publications {
+      display: block;
+    }
+
+    button.hvr-grow,
+    button.hvr-shrink {
+      border-radius: 10px !important;
+      background: var(--apple-blue) !important;
+      box-shadow: 0 8px 18px rgba(11, 99, 206, 0.18);
+    }
+
+    #theme-toggle {
+      width: 42px;
+      height: 42px;
+      padding: 0 !important;
+      border: 1px solid var(--apple-border) !important;
+      border-radius: 12px !important;
+      background: var(--apple-surface) !important;
+      color: var(--apple-text) !important;
+      box-shadow: var(--apple-shadow);
+      font-size: 18px !important;
+      line-height: 42px;
+    }
+
+    .dark-mode {
+      --apple-bg: #0b1020;
+      --apple-surface: #111827;
+      --apple-surface-solid: #172033;
+      --apple-text: #f8fafc;
+      --apple-muted: #cbd5e1;
+      --apple-border: rgba(148, 163, 184, 0.26);
+      --apple-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
+      --apple-blue: #60a5fa;
+      --tech-line: rgba(96, 165, 250, 0.35);
+    }
+
+    .dark-mode .apple-hero,
+    .dark-mode .apple-card,
+    .dark-mode .language-toggle {
+      background: var(--apple-surface) !important;
+    }
+
+    .dark-mode .apple-hero td,
+    .dark-mode .apple-card td,
+    .dark-mode .apple-section-heading td {
+      background: transparent !important;
+    }
+
+    .dark-mode .lang-btn.active {
+      background: #f5f5f7 !important;
+      color: #1d1d1f !important;
+    }
+
+    .dark-mode #theme-toggle {
+      background: #f8fafc !important;
+      color: #0b1020 !important;
+      border-color: rgba(255, 255, 255, 0.36) !important;
+    }
+
+    @media (max-width: 720px) {
+      body>table {
+        padding: 0 12px 32px;
+      }
+
+      .language-toggle {
+        top: 12px;
+        right: 12px;
+      }
+
+      #theme-toggle {
+        top: 12px !important;
+        right: 150px !important;
+      }
+
+      heading {
+        font-size: 23px !important;
+      }
+
+      .apple-hero {
+        margin-top: 72px !important;
+        border-radius: 16px;
+      }
+
+      .apple-card {
+        border-radius: 12px;
+      }
+
+      .apple-card>tbody>tr>td {
+        padding: 18px !important;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .more-publications {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .more-publications .apple-card {
+        display: table;
+        width: 100% !important;
+        height: 100%;
+        margin: 0 !important;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .apple-reveal {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+      }
     }
   </style>
 </head>
@@ -840,28 +1129,28 @@
             function togglePublications() {
               var morePublications = document.querySelector('.more-publications');
               var button = document.getElementById('expand-publications-btn');
-              button.addEventListener('click', function () {
-                if (morePublications.style.display === 'none') {
-                  morePublications.style.display = 'block';
-                  button.classList.remove('hvr-grow');
-                  button.classList.add('hvr-shrink');
-                  // 更新按钮文本 - 支持多语言
-                  const enText = button.querySelector('.lang-en');
-                  const zhText = button.querySelector('.lang-zh');
-                  if (enText) enText.textContent = 'Less Publications';
-                  if (zhText) zhText.textContent = '收起论文';
-                  morePublications.classList.add('magictime', 'puffIn');
-                } else {
-                  morePublications.style.display = 'none';
-                  button.classList.remove('hvr-shrink');
-                  button.classList.add('hvr-grow');
-                  // 更新按钮文本 - 支持多语言
-                  const enText = button.querySelector('.lang-en');
-                  const zhText = button.querySelector('.lang-zh');
-                  if (enText) enText.textContent = 'More Publications';
-                  if (zhText) zhText.textContent = '更多论文';
-                }
-              });
+              if (morePublications.style.display === 'none') {
+                morePublications.style.display = window.matchMedia('(min-width: 900px)').matches ? 'grid' : 'block';
+                button.classList.remove('hvr-grow');
+                button.classList.add('hvr-shrink');
+                const enText = button.querySelector('.lang-en');
+                const zhText = button.querySelector('.lang-zh');
+                if (enText) enText.textContent = 'Less Publications';
+                if (zhText) zhText.textContent = '收起论文';
+                morePublications.classList.add('magictime', 'puffIn');
+                morePublications.querySelectorAll('.apple-reveal').forEach((item, index) => {
+                  item.style.setProperty('--waterfall-delay', `${index * 120}ms`);
+                  item.classList.add('apple-visible');
+                });
+              } else {
+                morePublications.style.display = 'none';
+                button.classList.remove('hvr-shrink');
+                button.classList.add('hvr-grow');
+                const enText = button.querySelector('.lang-en');
+                const zhText = button.querySelector('.lang-zh');
+                if (enText) enText.textContent = 'More Publications';
+                if (zhText) zhText.textContent = '更多论文';
+              }
             }
           </script>
 
@@ -1669,7 +1958,7 @@
           </div>
           <div class="site-footnote">
             <div>Updated at Sep. 2025 · Template inspired by <a href="https://jonbarron.info">Jon Barron</a></div>
-            <div><a href="index_beauty.html">Beautiful version</a></div>
+            <div><a href="index.html">Academic version</a></div>
           </div>
         </td>
       </tr>
@@ -1679,50 +1968,90 @@
   <script>
     new WOW().init();
 
+    function initializeAppleWaterfall() {
+      const mainCell = document.querySelector('body > table > tbody > tr > td');
+      if (!mainCell) return;
+
+      const directTables = Array.from(mainCell.children).filter((element) => element.tagName === 'TABLE');
+      directTables.forEach((table, index) => {
+        if (index === 0) {
+          table.classList.add('apple-hero');
+        } else if (table.querySelector('heading')) {
+          table.classList.add('apple-section-heading');
+        } else {
+          table.classList.add('apple-card');
+        }
+      });
+
+      document.querySelectorAll('.more-publications table').forEach((table) => {
+        table.classList.add('apple-card');
+      });
+
+      document.querySelectorAll('hr').forEach((divider) => {
+        divider.classList.add('apple-divider');
+      });
+
+      const revealTargets = [
+        ...document.querySelectorAll('.apple-hero, .apple-section-heading, .apple-card'),
+        ...document.querySelectorAll('#expand-btn, #expand-publications-btn')
+      ];
+
+      revealTargets.forEach((target, index) => {
+        target.classList.add('apple-reveal');
+        target.style.setProperty('--waterfall-delay', `${(index % 6) * 95}ms`);
+      });
+
+      if (!('IntersectionObserver' in window)) {
+        revealTargets.forEach((target) => target.classList.add('apple-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('apple-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '0px 0px -8% 0px',
+        threshold: 0.12
+      });
+
+      revealTargets.forEach((target) => observer.observe(target));
+    }
+
 
     function showMoreNews() {
       var button = document.getElementById('expand-btn');
+      const allMoreNews = document.querySelectorAll('.more-news');
+      const isExpanded = allMoreNews[0].style.display === 'block';
 
-      // 确保只添加一次事件监听器
-      if (button.hasEventListener) return;
-      button.hasEventListener = true;
+      if (!isExpanded) {
+        allMoreNews.forEach(moreNews => {
+          moreNews.style.display = 'block';
+          moreNews.classList.add('magictime', 'puffIn');
+        });
 
-      button.addEventListener('click', function () {
-        // 获取所有的more-news元素
-        const allMoreNews = document.querySelectorAll('.more-news');
+        const enText = button.querySelector('.lang-en');
+        const zhText = button.querySelector('.lang-zh');
+        if (enText) enText.textContent = 'Less News';
+        if (zhText) zhText.textContent = '收起新闻';
+        button.classList.remove('hvr-grow');
+        button.classList.add('hvr-shrink');
+      } else {
+        allMoreNews.forEach(moreNews => {
+          moreNews.style.display = 'none';
+        });
 
-        // 检查是否已展开（通过检查第一个more-news的display状态）
-        const isExpanded = allMoreNews[0].style.display === 'block';
-
-        if (!isExpanded) {
-          // 展开所有more-news区域
-          allMoreNews.forEach(moreNews => {
-            moreNews.style.display = 'block';
-            moreNews.classList.add('magictime', 'puffIn');
-          });
-
-          // 更新按钮文本 - 支持多语言
-          const enText = button.querySelector('.lang-en');
-          const zhText = button.querySelector('.lang-zh');
-          if (enText) enText.textContent = 'Less News';
-          if (zhText) zhText.textContent = '收起新闻';
-          button.classList.remove('hvr-grow');
-          button.classList.add('hvr-shrink');
-        } else {
-          // 收起所有more-news区域
-          allMoreNews.forEach(moreNews => {
-            moreNews.style.display = 'none';
-          });
-
-          // 更新按钮文本 - 支持多语言
-          const enText = button.querySelector('.lang-en');
-          const zhText = button.querySelector('.lang-zh');
-          if (enText) enText.textContent = 'More News';
-          if (zhText) zhText.textContent = '更多新闻';
-          button.classList.remove('hvr-shrink');
-          button.classList.add('hvr-grow');
-        }
-      });
+        const enText = button.querySelector('.lang-en');
+        const zhText = button.querySelector('.lang-zh');
+        if (enText) enText.textContent = 'More News';
+        if (zhText) zhText.textContent = '更多新闻';
+        button.classList.remove('hvr-shrink');
+        button.classList.add('hvr-grow');
+      }
     }
 
     // 语言切换功能
@@ -1785,6 +2114,8 @@
 
     // 初始化页面
     document.addEventListener('DOMContentLoaded', () => {
+      initializeAppleWaterfall();
+
       // 语言初始化
       const savedLang = localStorage.getItem('language') || 'en';
       switchLanguage(savedLang);
