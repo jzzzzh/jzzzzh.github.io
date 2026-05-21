@@ -156,15 +156,21 @@
     }
 
     :root {
-      --apple-bg: #f7f8fa;
-      --apple-surface: #ffffff;
-      --apple-surface-solid: #ffffff;
+      --apple-bg: #eef3f8;
+      --apple-surface: rgba(255, 255, 255, 0.34);
+      --apple-surface-solid: rgba(255, 255, 255, 0.52);
       --apple-text: #111827;
       --apple-muted: #4b5563;
-      --apple-border: rgba(15, 23, 42, 0.12);
-      --apple-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-      --apple-blue: #0b63ce;
-      --tech-line: rgba(11, 99, 206, 0.18);
+      --apple-border: rgba(255, 255, 255, 0.64);
+      --apple-shadow: 0 22px 60px rgba(31, 41, 55, 0.14);
+      --apple-blue: #2563eb;
+      --apple-cyan: #06b6d4;
+      --apple-rose: #f43f5e;
+      --tech-line: rgba(37, 99, 235, 0.2);
+      --glass-highlight: rgba(255, 255, 255, 0.86);
+      --glass-blur: blur(30px) saturate(1.55);
+      --cursor-x: 50%;
+      --cursor-y: 16%;
     }
 
     html {
@@ -174,18 +180,67 @@
     body {
       margin: 0;
       background:
+        radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(6, 182, 212, 0.24), transparent 28rem),
+        radial-gradient(circle at 12% 16%, rgba(244, 63, 94, 0.14), transparent 24rem),
+        radial-gradient(circle at 86% 8%, rgba(37, 99, 235, 0.22), transparent 27rem),
         linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
         linear-gradient(180deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
         var(--apple-bg);
-      background-size: 28px 28px, 28px 28px, auto;
+      background-attachment: fixed;
+      background-size: auto, auto, auto, 32px 32px, 32px 32px, auto;
       color: var(--apple-text);
       overflow-x: hidden;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      z-index: 0;
+      pointer-events: none;
+      border-radius: 999px;
+      filter: blur(12px);
+      opacity: 0.7;
+      animation: glass-float 18s ease-in-out infinite alternate;
+    }
+
+    body::before {
+      top: 8vh;
+      left: max(-160px, -12vw);
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.28), rgba(37, 99, 235, 0.08) 58%, transparent 72%);
+    }
+
+    body::after {
+      right: max(-180px, -10vw);
+      bottom: 12vh;
+      width: 430px;
+      height: 430px;
+      background: radial-gradient(circle, rgba(244, 63, 94, 0.18), rgba(37, 99, 235, 0.1) 56%, transparent 72%);
+      animation-delay: -8s;
+    }
+
+    @keyframes glass-float {
+      from {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      to {
+        transform: translate3d(38px, -28px, 0) scale(1.08);
+      }
     }
 
     body>table {
-      width: min(100%, 980px) !important;
-      max-width: 980px !important;
-      padding: 0 22px 48px;
+      width: min(100%, 1040px) !important;
+      max-width: 1040px !important;
+      padding: 0 24px 54px;
+      position: relative;
+      z-index: 1;
     }
 
     body>table>tbody>tr>td {
@@ -196,9 +251,29 @@
       display: block;
       margin-top: 8px;
       color: var(--apple-text);
-      font-size: 25px !important;
-      font-weight: 760;
+      font-size: 24px !important;
+      font-weight: 780;
       letter-spacing: 0;
+    }
+
+    heading::before {
+      content: "";
+      display: inline-block;
+      width: 9px;
+      height: 24px;
+      margin-right: 10px;
+      border-radius: 999px;
+      vertical-align: -5px;
+      background: linear-gradient(180deg, var(--apple-blue), var(--apple-cyan));
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.26);
+    }
+
+    heading .lang-content {
+      display: inline;
+    }
+
+    heading .lang-content.hidden {
+      display: none;
     }
 
     papertitle {
@@ -206,6 +281,7 @@
       color: var(--apple-text);
       font-size: 17px !important;
       line-height: 1.35;
+      font-weight: 740;
     }
 
     p,
@@ -228,13 +304,15 @@
       align-items: center;
       padding: 5px;
       border: 1px solid var(--apple-border);
-      border-radius: 12px;
+      border-radius: 16px;
       background: var(--apple-surface);
-      box-shadow: var(--apple-shadow);
+      box-shadow: var(--apple-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
     }
 
     .lang-btn {
-      border-radius: 9px !important;
+      border-radius: 12px !important;
       background: transparent !important;
       color: var(--apple-text) !important;
       font-weight: 700;
@@ -242,53 +320,112 @@
     }
 
     .lang-btn.active {
-      background: var(--apple-text) !important;
+      background: linear-gradient(135deg, var(--apple-blue), var(--apple-cyan)) !important;
       color: white !important;
+      box-shadow: 0 10px 22px rgba(37, 99, 235, 0.22);
     }
 
     .apple-hero {
       margin-top: 44px !important;
       border: 1px solid var(--apple-border) !important;
-      border-top: 3px solid var(--apple-blue) !important;
-      border-radius: 18px;
+      border-top: 1px solid var(--glass-highlight) !important;
+      border-radius: 26px;
       background: var(--apple-surface);
-      box-shadow: var(--apple-shadow);
+      box-shadow: var(--apple-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.72);
       overflow: hidden;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      position: relative;
+    }
+
+    .apple-hero::after,
+    .apple-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: inherit;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.08) 34%, transparent 58%),
+        radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(255, 255, 255, 0.46), transparent 20rem);
+      opacity: 0.78;
+      mix-blend-mode: soft-light;
+    }
+
+    .apple-hero::before,
+    .apple-card::before {
+      position: relative;
+      z-index: 1;
     }
 
     .apple-hero img {
-      border-radius: 14px;
-      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.14);
+      border-radius: 22px;
+      border: 0;
+      box-shadow: 0 18px 44px rgba(15, 23, 42, 0.2);
+      transform: translateZ(0);
+      transition: transform 320ms ease, box-shadow 320ms ease;
+    }
+
+    .apple-hero img:hover {
+      transform: translateY(-3px) scale(1.015);
+      box-shadow: 0 24px 56px rgba(15, 23, 42, 0.24);
+    }
+
+    .apple-hero name {
+      display: inline-block;
+      letter-spacing: 0;
+      background: linear-gradient(135deg, #0f172a 8%, var(--apple-blue) 52%, var(--apple-cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .apple-hero p:last-child a {
+      display: inline;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      text-decoration: none;
+      font-weight: 700;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
     }
 
     .apple-section-heading {
       margin-top: 42px !important;
       margin-bottom: 8px !important;
+      background: transparent !important;
+      box-shadow: none !important;
     }
 
     .apple-section-heading td {
-      padding: 12px 8px !important;
-      border-bottom: 1px solid var(--tech-line);
+      padding: 14px 8px 8px !important;
+      border-bottom: 1px solid rgba(37, 99, 235, 0.18);
     }
 
     .apple-card {
       margin: 12px 0 !important;
       border: 1px solid var(--apple-border) !important;
-      border-left: 3px solid var(--tech-line) !important;
-      border-radius: 14px;
+      border-left: 1px solid rgba(255, 255, 255, 0.74) !important;
+      border-radius: 20px;
       background: var(--apple-surface);
-      box-shadow: var(--apple-shadow);
+      box-shadow: var(--apple-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.72);
       overflow: hidden;
-      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+      position: relative;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      transition: transform 260ms ease, border-color 260ms ease, box-shadow 260ms ease, background 260ms ease;
     }
 
     .apple-card::before,
     .apple-hero::before {
       content: "";
       display: block;
-      height: 1px;
+      height: 2px;
       width: 100%;
-      background: linear-gradient(90deg, transparent, var(--apple-blue), transparent);
+      background: linear-gradient(90deg, transparent, var(--apple-blue), var(--apple-cyan), transparent);
       opacity: 0;
       transform: translateX(-35%);
       transition: opacity 520ms ease, transform 720ms cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -301,14 +438,55 @@
     }
 
     .apple-card:hover {
-      transform: translateY(-2px);
+      transform: translateY(-4px);
       border-left-color: var(--apple-blue) !important;
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.09);
+      box-shadow: 0 28px 70px rgba(31, 41, 55, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.84);
       background: var(--apple-surface-solid);
     }
 
     .apple-card>tbody>tr>td {
       padding: 19px 22px !important;
+      position: relative;
+      z-index: 1;
+    }
+
+    .apple-card>tbody>tr>td::before,
+    .apple-hero>tbody>tr>td::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      z-index: -1;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.12);
+      pointer-events: none;
+    }
+
+    .apple-card p {
+      margin-top: 0.35em;
+      margin-bottom: 0.35em;
+    }
+
+    .apple-card img[src*="shields.io"] {
+      margin-top: 8px;
+      margin-right: 4px;
+      filter: saturate(0.96);
+      transition: transform 180ms ease, filter 180ms ease;
+    }
+
+    .apple-card a:hover img[src*="shields.io"] {
+      transform: translateY(-1px);
+      filter: saturate(1.1) brightness(1.03);
+    }
+
+    .apple-card img:not([src*="shields.io"]) {
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      object-fit: contain;
+    }
+
+    .timeline-card {
+      margin: 12px 0 !important;
     }
 
     .apple-divider {
@@ -349,15 +527,133 @@
       text-underline-offset: 3px;
     }
 
+    .friends-heading {
+      margin: 18px 0 4px !important;
+      color: var(--apple-muted);
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .friends-heading td {
+      padding: 8px !important;
+      border-bottom: 0 !important;
+    }
+
+    .friends-heading heading {
+      font-size: 15px !important;
+      font-weight: 720;
+      color: var(--apple-muted);
+      opacity: 0.78;
+    }
+
+    .friends-heading heading::before {
+      width: 5px;
+      height: 15px;
+      margin-right: 7px;
+      vertical-align: -2px;
+      box-shadow: none;
+      opacity: 0.55;
+    }
+
+    .friends-links {
+      margin: 0 0 8px !important;
+      color: var(--apple-muted);
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+    }
+
+    .friends-links td {
+      padding: 0 8px 8px !important;
+      font-size: 13px;
+      line-height: 1.8 !important;
+      background: transparent !important;
+    }
+
+    .friends-links a {
+      color: inherit;
+      opacity: 0.72;
+      text-decoration: none;
+    }
+
+    .friends-links a:hover {
+      color: var(--apple-blue);
+      opacity: 1;
+    }
+
     .more-publications {
       display: block;
     }
 
+    .more-news,
+    .more-publications {
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(-10px) scale(0.985);
+      transition:
+        max-height 520ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        opacity 360ms ease,
+        transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      will-change: max-height, opacity, transform;
+    }
+
+    .more-news.is-expanded,
+    .more-publications.is-expanded {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 28px;
+      z-index: 1000;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--apple-border);
+      border-radius: 50%;
+      background: var(--apple-surface);
+      color: var(--apple-blue);
+      box-shadow: var(--apple-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.66);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      cursor: pointer;
+      font-size: 19px;
+      font-weight: 780;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px) scale(0.96);
+      transition: opacity 240ms ease, transform 240ms ease, background 240ms ease, color 240ms ease;
+    }
+
+    .back-to-top {
+      right: 24px;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .back-to-top:hover {
+      color: white;
+      background: linear-gradient(135deg, var(--apple-blue), var(--apple-cyan));
+      transform: translateY(-3px) scale(1.03);
+    }
+
     button.hvr-grow,
     button.hvr-shrink {
-      border-radius: 10px !important;
-      background: var(--apple-blue) !important;
-      box-shadow: 0 8px 18px rgba(11, 99, 206, 0.18);
+      border-radius: 999px !important;
+      background: linear-gradient(135deg, var(--apple-blue), var(--apple-cyan)) !important;
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.24);
+      font-weight: 760;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+
+    button.hvr-grow:hover,
+    button.hvr-shrink:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(37, 99, 235, 0.3);
     }
 
     #theme-toggle {
@@ -365,24 +661,29 @@
       height: 42px;
       padding: 0 !important;
       border: 1px solid var(--apple-border) !important;
-      border-radius: 12px !important;
+      border-radius: 14px !important;
       background: var(--apple-surface) !important;
       color: var(--apple-text) !important;
-      box-shadow: var(--apple-shadow);
+      box-shadow: var(--apple-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.66);
       font-size: 18px !important;
       line-height: 42px;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
     }
 
     .dark-mode {
       --apple-bg: #0b1020;
-      --apple-surface: #111827;
-      --apple-surface-solid: #172033;
+      --apple-surface: rgba(17, 24, 39, 0.38);
+      --apple-surface-solid: rgba(23, 32, 51, 0.56);
       --apple-text: #f8fafc;
       --apple-muted: #cbd5e1;
-      --apple-border: rgba(148, 163, 184, 0.26);
-      --apple-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
+      --apple-border: rgba(255, 255, 255, 0.2);
+      --apple-shadow: 0 22px 58px rgba(0, 0, 0, 0.38);
       --apple-blue: #60a5fa;
+      --apple-cyan: #22d3ee;
+      --apple-rose: #fb7185;
       --tech-line: rgba(96, 165, 250, 0.35);
+      --glass-highlight: rgba(255, 255, 255, 0.24);
     }
 
     .dark-mode .apple-hero,
@@ -398,14 +699,21 @@
     }
 
     .dark-mode .lang-btn.active {
-      background: #f5f5f7 !important;
-      color: #1d1d1f !important;
+      background: linear-gradient(135deg, #93c5fd, #22d3ee) !important;
+      color: #06111f !important;
     }
 
     .dark-mode #theme-toggle {
-      background: #f8fafc !important;
+      background: rgba(248, 250, 252, 0.82) !important;
       color: #0b1020 !important;
       border-color: rgba(255, 255, 255, 0.36) !important;
+    }
+
+    .dark-mode .apple-hero name {
+      background: linear-gradient(135deg, #f8fafc 8%, #93c5fd 52%, #22d3ee);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     @media (max-width: 720px) {
@@ -429,15 +737,29 @@
 
       .apple-hero {
         margin-top: 72px !important;
-        border-radius: 16px;
+        border-radius: 20px;
       }
 
       .apple-card {
-        border-radius: 12px;
+        border-radius: 16px;
       }
 
       .apple-card>tbody>tr>td {
         padding: 18px !important;
+      }
+
+      .apple-hero name {
+        font-size: 0.9em;
+      }
+
+      .back-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 18px;
+      }
+
+      .back-to-top {
+        right: 12px;
       }
     }
 
@@ -465,6 +787,11 @@
         transform: none;
         filter: none;
         transition: none;
+      }
+
+      body::before,
+      body::after {
+        animation: none;
       }
     }
   </style>
@@ -1126,24 +1453,126 @@
           </div>
 
           <script>
+            function animateExpandable(element, expand, displayMode) {
+              if (expand) {
+                element.style.display = displayMode;
+                element.style.maxHeight = '0px';
+                element.classList.remove('is-expanded');
+                requestAnimationFrame(() => {
+                  element.style.maxHeight = `${element.scrollHeight}px`;
+                  element.classList.add('is-expanded');
+                });
+                window.setTimeout(() => {
+                  if (element.classList.contains('is-expanded')) {
+                    element.style.maxHeight = 'none';
+                  }
+                }, 540);
+              } else {
+                element.style.maxHeight = `${element.scrollHeight}px`;
+                element.offsetHeight;
+                element.style.maxHeight = '0px';
+                element.classList.remove('is-expanded');
+                window.setTimeout(() => {
+                  if (!element.classList.contains('is-expanded')) {
+                    element.style.display = 'none';
+                  }
+                }, 540);
+              }
+            }
+
+            function setupBackToTopButtons() {
+              if (!document.querySelector('.back-to-top')) {
+                const button = document.createElement('button');
+                button.className = 'back-to-top';
+                button.type = 'button';
+                button.setAttribute('aria-label', 'Back to top');
+                button.textContent = '↑';
+                button.addEventListener('click', () => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+                document.body.appendChild(button);
+              }
+
+              const updateButtons = () => {
+                document.querySelectorAll('.back-to-top').forEach((button) => {
+                  button.classList.toggle('visible', window.scrollY > 320);
+                });
+              };
+              updateButtons();
+              window.addEventListener('scroll', updateButtons, { passive: true });
+            }
+
+            function setupSectionSnapScroll() {
+              if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+              const mainCell = document.querySelector('body > table > tbody > tr > td');
+              if (!mainCell) return;
+
+              const getSections = () => Array.from(mainCell.children)
+                  .filter((element) => element.tagName === 'TABLE')
+                  .filter((table, index) => index === 0 || table.querySelector('heading'))
+                  .filter((table) => table.offsetParent !== null);
+
+              const isTypingTarget = (element) => {
+                if (!element) return false;
+                const tagName = element.tagName;
+                return element.isContentEditable || tagName === 'INPUT' || tagName === 'TEXTAREA' || tagName === 'SELECT';
+              };
+
+              const snapToSection = (direction) => {
+                if (isSnapping) return;
+
+                const sections = getSections();
+                if (sections.length < 2) return;
+
+                const currentY = window.scrollY;
+                const threshold = 24;
+                const nextSection = direction > 0
+                  ? sections.find((section) => section.offsetTop > currentY + threshold)
+                  : sections.slice().reverse().find((section) => section.offsetTop < currentY - threshold);
+
+                if (!nextSection) return;
+
+                isSnapping = true;
+                nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                window.setTimeout(() => {
+                  isSnapping = false;
+                }, 720);
+              };
+
+              let isSnapping = false;
+              window.addEventListener('keydown', (event) => {
+                if (event.altKey || event.ctrlKey || event.metaKey || isTypingTarget(event.target)) return;
+
+                const forwardKeys = ['ArrowDown', 'PageDown', ' '];
+                const backwardKeys = ['ArrowUp', 'PageUp'];
+                if (!forwardKeys.includes(event.key) && !backwardKeys.includes(event.key)) return;
+
+                event.preventDefault();
+                snapToSection(forwardKeys.includes(event.key) ? 1 : -1);
+              });
+            }
+
             function togglePublications() {
               var morePublications = document.querySelector('.more-publications');
               var button = document.getElementById('expand-publications-btn');
-              if (morePublications.style.display === 'none') {
-                morePublications.style.display = window.matchMedia('(min-width: 900px)').matches ? 'grid' : 'block';
+              const isExpanded = morePublications.classList.contains('is-expanded');
+              if (!isExpanded) {
+                animateExpandable(morePublications, true, window.matchMedia('(min-width: 900px)').matches ? 'grid' : 'block');
                 button.classList.remove('hvr-grow');
                 button.classList.add('hvr-shrink');
                 const enText = button.querySelector('.lang-en');
                 const zhText = button.querySelector('.lang-zh');
                 if (enText) enText.textContent = 'Less Publications';
                 if (zhText) zhText.textContent = '收起论文';
-                morePublications.classList.add('magictime', 'puffIn');
                 morePublications.querySelectorAll('.apple-reveal').forEach((item, index) => {
                   item.style.setProperty('--waterfall-delay', `${index * 120}ms`);
+                  item.classList.remove('apple-visible');
+                  item.offsetHeight;
                   item.classList.add('apple-visible');
                 });
               } else {
-                morePublications.style.display = 'none';
+                animateExpandable(morePublications, false);
                 button.classList.remove('hvr-shrink');
                 button.classList.add('hvr-grow');
                 const enText = button.querySelector('.lang-en');
@@ -1951,7 +2380,7 @@
           <hr
             style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #ccc, transparent); width: 100%; margin: 20px 0;">
 
-          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+          <table class="friends-heading" width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
             <tbody>
               <tr>
                 <td style="padding:20px;width:100%;vertical-align:middle">
@@ -1963,7 +2392,7 @@
               </tr>
             </tbody>
           </table>
-          <table
+          <table class="friends-links"
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
               <tr>
@@ -2006,6 +2435,10 @@
 
       const directTables = Array.from(mainCell.children).filter((element) => element.tagName === 'TABLE');
       directTables.forEach((table, index) => {
+        if (table.classList.contains('friends-heading') || table.classList.contains('friends-links')) {
+          return;
+        }
+
         if (index === 0) {
           table.classList.add('apple-hero');
         } else if (table.querySelector('heading')) {
@@ -2019,13 +2452,18 @@
         table.classList.add('apple-card');
       });
 
+      document.querySelectorAll('body > table > tbody > tr > td > .lang-content > table').forEach((table) => {
+        table.classList.add('apple-card', 'timeline-card');
+      });
+
       document.querySelectorAll('hr').forEach((divider) => {
         divider.classList.add('apple-divider');
       });
 
       const revealTargets = [
         ...document.querySelectorAll('.apple-hero, .apple-section-heading, .apple-card'),
-        ...document.querySelectorAll('#expand-btn, #expand-publications-btn')
+        ...document.querySelectorAll('#expand-btn, #expand-publications-btn'),
+        ...document.querySelectorAll('.friends-heading, .friends-links')
       ];
 
       revealTargets.forEach((target, index) => {
@@ -2054,16 +2492,34 @@
       revealTargets.forEach((target) => observer.observe(target));
     }
 
+    function initializeGlassPointer() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      let rafId = null;
+      const updatePointer = (clientX, clientY) => {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          const x = Math.round((clientX / window.innerWidth) * 100);
+          const y = Math.round((clientY / window.innerHeight) * 100);
+          document.body.style.setProperty('--cursor-x', `${x}%`);
+          document.body.style.setProperty('--cursor-y', `${y}%`);
+        });
+      };
+
+      window.addEventListener('pointermove', (event) => {
+        updatePointer(event.clientX, event.clientY);
+      }, { passive: true });
+    }
+
 
     function showMoreNews() {
       var button = document.getElementById('expand-btn');
       const allMoreNews = document.querySelectorAll('.more-news');
-      const isExpanded = allMoreNews[0].style.display === 'block';
+      const isExpanded = allMoreNews[0].classList.contains('is-expanded');
 
       if (!isExpanded) {
         allMoreNews.forEach(moreNews => {
-          moreNews.style.display = 'block';
-          moreNews.classList.add('magictime', 'puffIn');
+          animateExpandable(moreNews, true, 'block');
         });
 
         const enText = button.querySelector('.lang-en');
@@ -2074,7 +2530,7 @@
         button.classList.add('hvr-shrink');
       } else {
         allMoreNews.forEach(moreNews => {
-          moreNews.style.display = 'none';
+          animateExpandable(moreNews, false);
         });
 
         const enText = button.querySelector('.lang-en');
@@ -2147,6 +2603,9 @@
     // 初始化页面
     document.addEventListener('DOMContentLoaded', () => {
       initializeAppleWaterfall();
+      initializeGlassPointer();
+      setupBackToTopButtons();
+      setupSectionSnapScroll();
 
       // 语言初始化
       const savedLang = localStorage.getItem('language') || 'en';
@@ -2156,11 +2615,15 @@
       const allMoreNews = document.querySelectorAll('.more-news');
       allMoreNews.forEach(moreNews => {
         moreNews.style.display = 'none';
+        moreNews.style.maxHeight = '0px';
+        moreNews.classList.remove('is-expanded');
       });
 
       const allMorePublications = document.querySelectorAll('.more-publications');
       allMorePublications.forEach(morePubs => {
         morePubs.style.display = 'none';
+        morePubs.style.maxHeight = '0px';
+        morePubs.classList.remove('is-expanded');
       });
 
       // 创建主题切换按钮

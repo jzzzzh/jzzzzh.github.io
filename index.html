@@ -178,6 +178,78 @@
       text-decoration-color: rgba(119, 119, 119, 0.35);
       text-underline-offset: 3px;
     }
+
+    .more-news,
+    .more-publications {
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(-10px) scale(0.985);
+      transition:
+        max-height 520ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        opacity 360ms ease,
+        transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      will-change: max-height, opacity, transform;
+    }
+
+    .more-news.is-expanded,
+    .more-publications.is-expanded {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 26px;
+      z-index: 1000;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(0, 123, 255, 0.24);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      color: #007BFF;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 220ms ease, transform 220ms ease, background-color 220ms ease;
+    }
+
+    .back-to-top {
+      right: 22px;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: #007BFF;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .dark-mode .back-to-top {
+      background: rgba(51, 51, 51, 0.92);
+      color: #99ccff;
+      border-color: rgba(153, 204, 255, 0.28);
+    }
+
+    @media (max-width: 720px) {
+      .back-to-top {
+        width: 38px;
+        height: 38px;
+        bottom: 18px;
+      }
+
+      .back-to-top {
+        right: 12px;
+      }
+    }
   </style>
 </head>
 
@@ -837,20 +909,120 @@
           </div>
 
           <script>
+            function animateExpandable(element, expand, displayMode) {
+              if (expand) {
+                element.style.display = displayMode;
+                element.style.maxHeight = '0px';
+                element.classList.remove('is-expanded');
+                requestAnimationFrame(() => {
+                  element.style.maxHeight = `${element.scrollHeight}px`;
+                  element.classList.add('is-expanded');
+                });
+                window.setTimeout(() => {
+                  if (element.classList.contains('is-expanded')) {
+                    element.style.maxHeight = 'none';
+                  }
+                }, 540);
+              } else {
+                element.style.maxHeight = `${element.scrollHeight}px`;
+                element.offsetHeight;
+                element.style.maxHeight = '0px';
+                element.classList.remove('is-expanded');
+                window.setTimeout(() => {
+                  if (!element.classList.contains('is-expanded')) {
+                    element.style.display = 'none';
+                  }
+                }, 540);
+              }
+            }
+
+            function setupBackToTopButtons() {
+              if (!document.querySelector('.back-to-top')) {
+                const button = document.createElement('button');
+                button.className = 'back-to-top';
+                button.type = 'button';
+                button.setAttribute('aria-label', 'Back to top');
+                button.textContent = '↑';
+                button.addEventListener('click', () => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+                document.body.appendChild(button);
+              }
+
+              const updateButtons = () => {
+                document.querySelectorAll('.back-to-top').forEach((button) => {
+                  button.classList.toggle('visible', window.scrollY > 320);
+                });
+              };
+              updateButtons();
+              window.addEventListener('scroll', updateButtons, { passive: true });
+            }
+
+            function setupSectionSnapScroll() {
+              if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+              const mainCell = document.querySelector('body > table > tbody > tr > td');
+              if (!mainCell) return;
+
+              const getSections = () => Array.from(mainCell.children)
+                  .filter((element) => element.tagName === 'TABLE')
+                  .filter((table, index) => index === 0 || table.querySelector('heading'))
+                  .filter((table) => table.offsetParent !== null);
+
+              const isTypingTarget = (element) => {
+                if (!element) return false;
+                const tagName = element.tagName;
+                return element.isContentEditable || tagName === 'INPUT' || tagName === 'TEXTAREA' || tagName === 'SELECT';
+              };
+
+              const snapToSection = (direction) => {
+                if (isSnapping) return;
+
+                const sections = getSections();
+                if (sections.length < 2) return;
+
+                const currentY = window.scrollY;
+                const threshold = 24;
+                const nextSection = direction > 0
+                  ? sections.find((section) => section.offsetTop > currentY + threshold)
+                  : sections.slice().reverse().find((section) => section.offsetTop < currentY - threshold);
+
+                if (!nextSection) return;
+
+                isSnapping = true;
+                nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                window.setTimeout(() => {
+                  isSnapping = false;
+                }, 720);
+              };
+
+              let isSnapping = false;
+              window.addEventListener('keydown', (event) => {
+                if (event.altKey || event.ctrlKey || event.metaKey || isTypingTarget(event.target)) return;
+
+                const forwardKeys = ['ArrowDown', 'PageDown', ' '];
+                const backwardKeys = ['ArrowUp', 'PageUp'];
+                if (!forwardKeys.includes(event.key) && !backwardKeys.includes(event.key)) return;
+
+                event.preventDefault();
+                snapToSection(forwardKeys.includes(event.key) ? 1 : -1);
+              });
+            }
+
             function togglePublications() {
               var morePublications = document.querySelector('.more-publications');
               var button = document.getElementById('expand-publications-btn');
-              if (morePublications.style.display === 'none') {
-                morePublications.style.display = 'block';
+              const isExpanded = morePublications.classList.contains('is-expanded');
+              if (!isExpanded) {
+                animateExpandable(morePublications, true, 'block');
                 button.classList.remove('hvr-grow');
                 button.classList.add('hvr-shrink');
                 const enText = button.querySelector('.lang-en');
                 const zhText = button.querySelector('.lang-zh');
                 if (enText) enText.textContent = 'Less Publications';
                 if (zhText) zhText.textContent = '收起论文';
-                morePublications.classList.add('magictime', 'puffIn');
               } else {
-                morePublications.style.display = 'none';
+                animateExpandable(morePublications, false);
                 button.classList.remove('hvr-shrink');
                 button.classList.add('hvr-grow');
                 const enText = button.querySelector('.lang-en');
@@ -1711,12 +1883,11 @@
     function showMoreNews() {
       var button = document.getElementById('expand-btn');
       const allMoreNews = document.querySelectorAll('.more-news');
-      const isExpanded = allMoreNews[0].style.display === 'block';
+      const isExpanded = allMoreNews[0].classList.contains('is-expanded');
 
       if (!isExpanded) {
         allMoreNews.forEach(moreNews => {
-          moreNews.style.display = 'block';
-          moreNews.classList.add('magictime', 'puffIn');
+          animateExpandable(moreNews, true, 'block');
         });
 
         const enText = button.querySelector('.lang-en');
@@ -1727,7 +1898,7 @@
         button.classList.add('hvr-shrink');
       } else {
         allMoreNews.forEach(moreNews => {
-          moreNews.style.display = 'none';
+          animateExpandable(moreNews, false);
         });
 
         const enText = button.querySelector('.lang-en');
@@ -1799,6 +1970,9 @@
 
     // 初始化页面
     document.addEventListener('DOMContentLoaded', () => {
+      setupBackToTopButtons();
+      setupSectionSnapScroll();
+
       // 语言初始化
       const savedLang = localStorage.getItem('language') || 'en';
       switchLanguage(savedLang);
@@ -1807,11 +1981,15 @@
       const allMoreNews = document.querySelectorAll('.more-news');
       allMoreNews.forEach(moreNews => {
         moreNews.style.display = 'none';
+        moreNews.style.maxHeight = '0px';
+        moreNews.classList.remove('is-expanded');
       });
 
       const allMorePublications = document.querySelectorAll('.more-publications');
       allMorePublications.forEach(morePubs => {
         morePubs.style.display = 'none';
+        morePubs.style.maxHeight = '0px';
+        morePubs.classList.remove('is-expanded');
       });
 
       // 创建主题切换按钮
