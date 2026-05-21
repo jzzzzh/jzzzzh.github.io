@@ -840,28 +840,24 @@
             function togglePublications() {
               var morePublications = document.querySelector('.more-publications');
               var button = document.getElementById('expand-publications-btn');
-              button.addEventListener('click', function () {
-                if (morePublications.style.display === 'none') {
-                  morePublications.style.display = 'block';
-                  button.classList.remove('hvr-grow');
-                  button.classList.add('hvr-shrink');
-                  // 更新按钮文本 - 支持多语言
-                  const enText = button.querySelector('.lang-en');
-                  const zhText = button.querySelector('.lang-zh');
-                  if (enText) enText.textContent = 'Less Publications';
-                  if (zhText) zhText.textContent = '收起论文';
-                  morePublications.classList.add('magictime', 'puffIn');
-                } else {
-                  morePublications.style.display = 'none';
-                  button.classList.remove('hvr-shrink');
-                  button.classList.add('hvr-grow');
-                  // 更新按钮文本 - 支持多语言
-                  const enText = button.querySelector('.lang-en');
-                  const zhText = button.querySelector('.lang-zh');
-                  if (enText) enText.textContent = 'More Publications';
-                  if (zhText) zhText.textContent = '更多论文';
-                }
-              });
+              if (morePublications.style.display === 'none') {
+                morePublications.style.display = 'block';
+                button.classList.remove('hvr-grow');
+                button.classList.add('hvr-shrink');
+                const enText = button.querySelector('.lang-en');
+                const zhText = button.querySelector('.lang-zh');
+                if (enText) enText.textContent = 'Less Publications';
+                if (zhText) zhText.textContent = '收起论文';
+                morePublications.classList.add('magictime', 'puffIn');
+              } else {
+                morePublications.style.display = 'none';
+                button.classList.remove('hvr-shrink');
+                button.classList.add('hvr-grow');
+                const enText = button.querySelector('.lang-en');
+                const zhText = button.querySelector('.lang-zh');
+                if (enText) enText.textContent = 'More Publications';
+                if (zhText) zhText.textContent = '更多论文';
+              }
             }
           </script>
 
@@ -1682,47 +1678,33 @@
 
     function showMoreNews() {
       var button = document.getElementById('expand-btn');
+      const allMoreNews = document.querySelectorAll('.more-news');
+      const isExpanded = allMoreNews[0].style.display === 'block';
 
-      // 确保只添加一次事件监听器
-      if (button.hasEventListener) return;
-      button.hasEventListener = true;
+      if (!isExpanded) {
+        allMoreNews.forEach(moreNews => {
+          moreNews.style.display = 'block';
+          moreNews.classList.add('magictime', 'puffIn');
+        });
 
-      button.addEventListener('click', function () {
-        // 获取所有的more-news元素
-        const allMoreNews = document.querySelectorAll('.more-news');
+        const enText = button.querySelector('.lang-en');
+        const zhText = button.querySelector('.lang-zh');
+        if (enText) enText.textContent = 'Less News';
+        if (zhText) zhText.textContent = '收起新闻';
+        button.classList.remove('hvr-grow');
+        button.classList.add('hvr-shrink');
+      } else {
+        allMoreNews.forEach(moreNews => {
+          moreNews.style.display = 'none';
+        });
 
-        // 检查是否已展开（通过检查第一个more-news的display状态）
-        const isExpanded = allMoreNews[0].style.display === 'block';
-
-        if (!isExpanded) {
-          // 展开所有more-news区域
-          allMoreNews.forEach(moreNews => {
-            moreNews.style.display = 'block';
-            moreNews.classList.add('magictime', 'puffIn');
-          });
-
-          // 更新按钮文本 - 支持多语言
-          const enText = button.querySelector('.lang-en');
-          const zhText = button.querySelector('.lang-zh');
-          if (enText) enText.textContent = 'Less News';
-          if (zhText) zhText.textContent = '收起新闻';
-          button.classList.remove('hvr-grow');
-          button.classList.add('hvr-shrink');
-        } else {
-          // 收起所有more-news区域
-          allMoreNews.forEach(moreNews => {
-            moreNews.style.display = 'none';
-          });
-
-          // 更新按钮文本 - 支持多语言
-          const enText = button.querySelector('.lang-en');
-          const zhText = button.querySelector('.lang-zh');
-          if (enText) enText.textContent = 'More News';
-          if (zhText) zhText.textContent = '更多新闻';
-          button.classList.remove('hvr-shrink');
-          button.classList.add('hvr-grow');
-        }
-      });
+        const enText = button.querySelector('.lang-en');
+        const zhText = button.querySelector('.lang-zh');
+        if (enText) enText.textContent = 'More News';
+        if (zhText) zhText.textContent = '更多新闻';
+        button.classList.remove('hvr-shrink');
+        button.classList.add('hvr-grow');
+      }
     }
 
     // 语言切换功能
