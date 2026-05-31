@@ -171,6 +171,9 @@
       --glass-blur: blur(30px) saturate(1.55);
       --cursor-x: 50%;
       --cursor-y: 16%;
+      --tilt-x: 0deg;
+      --tilt-y: 0deg;
+      --lift-z: 0px;
     }
 
     html {
@@ -193,6 +196,8 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       min-height: 100vh;
       position: relative;
+      perspective: 1200px;
+      perspective-origin: var(--cursor-x) var(--cursor-y);
     }
 
     body::before,
@@ -336,6 +341,7 @@
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
       position: relative;
+      transform-style: preserve-3d;
     }
 
     .apple-hero::after,
@@ -350,6 +356,7 @@
         radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(255, 255, 255, 0.46), transparent 20rem);
       opacity: 0.78;
       mix-blend-mode: soft-light;
+      transform: translateZ(18px);
     }
 
     .apple-hero::before,
@@ -416,6 +423,7 @@
       position: relative;
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
+      transform-style: preserve-3d;
       transition: transform 260ms ease, border-color 260ms ease, box-shadow 260ms ease, background 260ms ease;
     }
 
@@ -447,7 +455,8 @@
     .apple-card>tbody>tr>td {
       padding: 19px 22px !important;
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      transform: translateZ(22px);
     }
 
     .apple-card>tbody>tr>td::before,
@@ -508,6 +517,35 @@
     .apple-reveal.apple-visible {
       opacity: 1;
       transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    .apple-reveal.apple-visible.glass-3d {
+      transform:
+        translate3d(0, 0, var(--lift-z))
+        rotateX(var(--tilt-x))
+        rotateY(var(--tilt-y))
+        scale(1);
+    }
+
+    .glass-3d {
+      will-change: transform;
+      transform:
+        translate3d(0, 0, var(--lift-z))
+        rotateX(var(--tilt-x))
+        rotateY(var(--tilt-y));
+    }
+
+    .apple-card.glass-3d:hover,
+    .apple-hero.glass-3d:hover {
+      transform:
+        translate3d(0, -5px, var(--lift-z))
+        rotateX(var(--tilt-x))
+        rotateY(var(--tilt-y))
+        scale(1.005);
+      box-shadow:
+        0 34px 84px rgba(31, 41, 55, 0.2),
+        0 10px 24px rgba(37, 99, 235, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.86);
     }
 
     .site-footnote {
@@ -789,6 +827,13 @@
         transition: none;
       }
 
+      .glass-3d,
+      .apple-reveal.apple-visible.glass-3d,
+      .apple-card.glass-3d:hover,
+      .apple-hero.glass-3d:hover {
+        transform: none;
+      }
+
       body::before,
       body::after {
         animation: none;
@@ -918,7 +963,7 @@
                       such as <strong>HiBench</strong>, and comprehensive surveys like <strong>WebAgents</strong>.
                       My work has been published in <strong>top-tier conferences</strong>, including
                       <strong>NeurIPS 2024</strong> (spotlight) and <strong>AAAI 2025</strong>, and has accumulated
-                      <strong>300+ citations</strong>, with an <strong>h-index of 5</strong>.
+                      <strong>400+ citations</strong>, with an <strong>h-index of 5</strong>.
                     </p>
                   </div>
                   <!-- 中文版本 -->
@@ -932,7 +977,7 @@
                       如<strong>HiBench</strong>，以及综合性调研如<strong>WebAgents</strong>。
                       我的工作发表在<strong>顶级会议</strong>上，包括<strong>NeurIPS 2024</strong>（spotlight）和<strong>AAAI
                         2025</strong>，
-                      累计获得<strong>300+引用</strong>，<strong>h指数为5</strong>。
+                      累计获得<strong>400+引用</strong>，<strong>h指数为5</strong>。
                     </p>
                   </div>
                 </td>
@@ -2456,6 +2501,10 @@
         table.classList.add('apple-card', 'timeline-card');
       });
 
+      document.querySelectorAll('.apple-hero, .apple-card').forEach((panel) => {
+        panel.classList.add('glass-3d');
+      });
+
       document.querySelectorAll('hr').forEach((divider) => {
         divider.classList.add('apple-divider');
       });
@@ -2509,6 +2558,38 @@
       window.addEventListener('pointermove', (event) => {
         updatePointer(event.clientX, event.clientY);
       }, { passive: true });
+    }
+
+    function initializeGlassTilt() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (window.matchMedia('(pointer: coarse)').matches) return;
+
+      const panels = document.querySelectorAll('.glass-3d');
+      panels.forEach((panel) => {
+        let rafId = null;
+
+        const resetTilt = () => {
+          if (rafId) cancelAnimationFrame(rafId);
+          panel.style.setProperty('--tilt-x', '0deg');
+          panel.style.setProperty('--tilt-y', '0deg');
+          panel.style.setProperty('--lift-z', '0px');
+        };
+
+        panel.addEventListener('pointermove', (event) => {
+          if (rafId) cancelAnimationFrame(rafId);
+          rafId = requestAnimationFrame(() => {
+            const rect = panel.getBoundingClientRect();
+            const relativeX = (event.clientX - rect.left) / rect.width - 0.5;
+            const relativeY = (event.clientY - rect.top) / rect.height - 0.5;
+            panel.style.setProperty('--tilt-x', `${(-relativeY * 5.5).toFixed(2)}deg`);
+            panel.style.setProperty('--tilt-y', `${(relativeX * 6.5).toFixed(2)}deg`);
+            panel.style.setProperty('--lift-z', '18px');
+          });
+        }, { passive: true });
+
+        panel.addEventListener('pointerleave', resetTilt);
+        panel.addEventListener('blur', resetTilt, true);
+      });
     }
 
 
@@ -2604,6 +2685,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       initializeAppleWaterfall();
       initializeGlassPointer();
+      initializeGlassTilt();
       setupBackToTopButtons();
       setupSectionSnapScroll();
 
