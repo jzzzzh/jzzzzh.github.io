@@ -400,6 +400,50 @@
       -webkit-backdrop-filter: none;
     }
 
+    .internship-callout {
+      position: relative;
+      box-sizing: border-box;
+      width: 100%;
+      margin: 18px 0 8px;
+      padding: 18px 22px;
+      overflow: hidden;
+      border: 1px solid rgba(37, 99, 235, 0.24);
+      border-radius: 20px;
+      background:
+        linear-gradient(110deg, rgba(37, 99, 235, 0.11), rgba(34, 211, 238, 0.12)),
+        var(--apple-surface-solid);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 16px 38px rgba(37, 99, 235, 0.1);
+    }
+
+    .internship-callout::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--apple-blue), var(--apple-cyan));
+    }
+
+    .internship-callout-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 5px;
+      color: var(--apple-text);
+      font-weight: 780;
+      letter-spacing: -0.01em;
+    }
+
+    .internship-callout p {
+      margin: 0;
+      color: var(--apple-text);
+      font-size: 0.96em;
+      line-height: 1.55;
+    }
+
+    .internship-callout a {
+      font-weight: 720;
+    }
+
     .apple-section-heading {
       margin-top: 42px !important;
       margin-bottom: 8px !important;
@@ -754,6 +798,23 @@
       color: transparent;
     }
 
+    .dark-mode .internship-callout {
+      border-color: rgba(96, 165, 250, 0.58);
+      background:
+        linear-gradient(110deg, rgba(30, 64, 175, 0.52), rgba(8, 145, 178, 0.34)),
+        #111827;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 18px 40px rgba(0, 0, 0, 0.28);
+    }
+
+    .dark-mode .internship-callout-title,
+    .dark-mode .internship-callout p {
+      color: #f8fafc;
+    }
+
+    .dark-mode .internship-callout a {
+      color: #7dd3fc !important;
+    }
+
     @media (max-width: 720px) {
       body>table {
         padding: 0 12px 32px;
@@ -932,18 +993,18 @@
                       src="images/zhuohang.jpg" class="hoverZoomLink"></a>
                 </td>
               </tr>
+
             </tbody>
           </table>
 
-          <div style="margin:0 20px 20px;padding:12px 16px;border:1px solid #79b8b2;border-left:5px solid #2a8c82;border-radius:4px;background:#eef8f7;line-height:1.6;">
+          <div class="internship-callout">
             <div class="lang-content lang-en">
-              <strong>🤝 Seeking Internship Opportunities</strong><br>
-              I am currently seeking internship opportunities in <strong>large language models (LLMs) and AI agents</strong>.
-              Please feel free to reach out via <a href="mailto:zhuohangjiang2002@gmail.com">email</a> or WeChat.
+              <div class="internship-callout-title"><span>✨</span><span>Open to Internship Opportunities</span></div>
+              <p>Seeking internships in <strong>large language models and AI agents</strong>. Feel free to connect via <a href="mailto:zhuohangjiang2002@gmail.com">email</a> or WeChat.</p>
             </div>
             <div class="lang-content lang-zh hidden">
-              <strong>🤝 实习机会</strong><br>
-              我目前正在寻找<strong>大语言模型（LLM）与 AI Agent 方向</strong>的实习机会，欢迎通过<a href="mailto:zhuohangjiang2002@gmail.com">邮件</a>或微信联系交流。
+              <div class="internship-callout-title"><span>✨</span><span>期待实习机会</span></div>
+              <p>正在寻找<strong>大语言模型与 AI Agent 方向</strong>的实习机会，欢迎通过<a href="mailto:zhuohangjiang2002@gmail.com">邮件</a>或微信联系交流。</p>
             </div>
           </div>
 
@@ -1225,7 +1286,7 @@
                 <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
                   <papertitle>A Survey on AI Smart Glasses for Wearable Intelligence: From Egocentric Sensing to Agentic Personalization</papertitle>
                   <br>
-                  Xu Yuan<sup>†</sup>, Yi Wang<sup>†</sup>, <b>Zhuohang Jiang</b>, Haohao Qu, Yujuan Ding, Shanru Lin, Guoliang Xing, Hongxia Yang, Jiannong Cao, Qing Li, Wenqi Fan<sup>*</sup>
+                  Xu Yuan, Yi Wang, <b>Zhuohang Jiang</b>, Haohao Qu, Yujuan Ding, Shanru Lin, Guoliang Xing, Hongxia Yang, Jiannong Cao, Qing Li, Wenqi Fan
                   <br>
                   <a href="https://www.preprints.org/manuscript/202608.0648"><img
                     src="https://img.shields.io/badge/Preprints-202608.0648-2f6f8f?style=flat-square" alt="Preprints.org"></a>
@@ -1929,6 +1990,52 @@
                       (4) 在现实场景中层次推理的实际应用和部署考虑。<br>
                       这一邀请认可了我们HiBench工作的影响力，并将我们的研究置于
                       LLM推理能力的前沿。
+                    </font>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <hr
+            style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #ccc, transparent); width: 100%; margin: 20px 0;">
+
+          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+            <tbody>
+              <tr>
+                <td style="padding:20px;width:100%;vertical-align:middle">
+                  <heading>
+                    <span class="lang-content lang-en">Tutorials</span>
+                    <span class="lang-content lang-zh hidden">教程</span>
+                  </heading>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
+                  <papertitle>WebAgents: Towards Next-Generation AI Agents for Web Automation with Large Foundation Models</papertitle>
+                  <br>
+                  Yujuan Ding, Liangbo Ning, Ziran Liang, <b>Zhuohang Jiang</b>, Haohao Qu, Wenqi Fan, Qing Li, Hui Liu, Xiaoyong Wei, Philip S. Yu
+                  <br>
+                  <strong>KDD 2025 Tutorial</strong> &bull; <em>The 31st ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD 2025)</em> &bull; 2025
+                  <br>
+                  <a href="https://arxiv.org/abs/2503.23350"><img
+                      src="https://img.shields.io/badge/arXiv-2503.23350-b31b1b?style=flat-square" alt="arXiv"></a>
+                  <br>
+                  <div class="lang-content lang-en">
+                    <font color='gray'>
+                      A KDD 2025 tutorial on WebAgents, covering how large foundation models enable the next generation
+                      of AI agents for reliable web automation.
+                    </font>
+                  </div>
+                  <div class="lang-content lang-zh hidden">
+                    <font color='gray'>
+                      KDD 2025 教程，介绍大型基础模型如何赋能面向网页自动化的下一代 AI 智能体。
                     </font>
                   </div>
                 </td>
