@@ -137,6 +137,28 @@ span.highlight {
   background-color: #ffffd0;
 }
 
+.publication-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  margin: 4px 0;
+}
+
+.publication-meta img {
+  display: block;
+  height: 20px;
+}
+
+.summary-keywords {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: inherit;
+  opacity: 0.75;
+}
+
 .bold-red {
   font-weight: bold;
   color: red;
