@@ -1,0 +1,68 @@
+{
+  "profile": {
+    "en": "My research focuses on LLM reasoning and evaluation, self-evolving agents, and multimodal retrieval-augmented generation. I lead work on hierarchical reasoning benchmarks (HiBench), multimodal retrieval agents (SUPERGLASSES / SUPERLENS and QA-Dragon), experience-driven strategy iteration (A/B Agent), and the decoupling of offline LLM intent reasoning from online retrieval (AIR). My earlier research in computer vision is now a supporting background to these directions.",
+    "zh": "研究聚焦大模型推理与评测、自进化智能体、多模态检索增强生成。代表工作包括层次结构推理基准 HiBench、智能眼镜与视觉问答中的多模态检索智能体 SUPERGLASSES / SUPERLENS 和 QA-Dragon、基于实验反馈迭代的 A/B Agent，以及离线大模型意图推理与在线检索解耦的 AIR。此前从事计算机视觉与图像取证研究。"
+  },
+  "experience": {
+    "en": [
+      "Developed A/B Agent: aligned historical strategies and code changes, parameters and measured outcomes into retrievable units; integrated automatic experiment comparison, tuning recommendations, configuration checks and review with the A/B platform. Successful and failed experience is continuously written back to support subsequent iterations.",
+      "Developed AIR: decomposed LLM-generated semantic intent into reusable atomic knowledge. Offline intent generation and caching support online retrieval and composition, approximating sequence-level semantic reasoning without live LLM calls on the serving path."
+    ],
+    "zh": [
+      "研发 A/B Agent：将历史策略与代码改动、参数及指标结果对齐为可检索单元；接入 A/B 平台，自动对比实验、输出调参建议，并执行配置校验与审核。成功与失败经验持续回写，为后续迭代提供依据。",
+      "研发 AIR：将大模型生成的语义意图分解为可复用的原子知识，通过离线意图生成与缓存、在线检索与组合，近似序列级语义推理，避免在线服务链路实时调用大模型。"
+    ]
+  },
+  "papers": {
+    "hibench": {
+      "en": [
+        "As first author and project lead, I led benchmark design and code development for evaluating hierarchical structure reasoning in LLMs. I built tree, JSON and formula generators with controlled depth, width and node counts, algorithmic ground-truth answers and unified prompts, and incorporated code and paper tasks. The benchmark contains 30 tasks and 39,519 queries.",
+        "We evaluated 20 LLMs from 10 families, comparing structural representations, complexity and chain-of-thought prompting. I constructed instruction-tuning data that yielded average relative gains of 88.84% for Llama-3.1-8B and 31.38% for Qwen2.5-7B. The dataset and modular evaluation toolkit are open-source, supporting reproducible evaluation and further research on structure-aware reasoning."
+      ],
+      "zh": [
+        "作为第一作者与项目负责人，负责层次结构推理基准设计与代码统筹。控制树深度、宽度与节点数，实现树、JSON、公式生成、算法标答与统一提示，并纳入代码和论文任务；共构建 30 项任务、39,519 条样例。",
+        "对 10 个家族的 20 个 LLM 开展结构表示、复杂度与 CoT 对比评测；构造指令微调数据，使 Llama-3.1-8B、Qwen2.5-7B 分别获得 88.84%、31.38% 的平均相对提升。开源数据与模块化评测工具库，支持结构化推理的复现、评测与后续研究。"
+      ]
+    },
+    "superglasses": {
+      "en": [
+        "As first author, I built SUPERGLASSES, a benchmark for evaluating vision-language models as smart-glasses agents, and SUPERLENS, the accompanying multimodal agent. The real-device dataset contains 2,422 QA pairs across 14 domains and 8 question types, with tool-use traces. Domain routing selects direct answering or RAG, while open-vocabulary detection localizes small objects and multi-hop questions are decomposed into single-hop subqueries.",
+        "The agent searches image and text evidence, cleans HTML and reranks evidence chunks. A two-level Redis cache reuses query-to-URL and URL-to-content results. We evaluated 26 model/RAG variants; SUPERLENS improved the Qwen2.5-VL-7B score from 32.82 to 44.10, a gain of 11.28 points."
+      ],
+      "zh": [
+        "作为第一作者，构建智能眼镜视觉语言模型评测基准 SUPERGLASSES 与多模态智能体 SUPERLENS。基于真实设备采集 2,422 个问答对，覆盖 14 个领域、8 类问题，并保留工具调用轨迹。通过领域路由选择直接回答或 RAG，以开放词汇检测定位小目标，并将多跳问题拆为单跳子查询。",
+        "智能体执行图像与文本搜索、HTML 清洗及证据分块重排；采用两级 Redis 缓存复用“查询到 URL、URL 到正文”的结果。评测 26 个模型/RAG 变体，基于 Qwen2.5-VL-7B 的 SUPERLENS 得分由 32.82 提至 44.10，提升 11.28 分。"
+      ]
+    },
+    "abagent": {
+      "en": [
+        "As first author, I developed a self-evolving LLM agent for strategy iteration in industrial A/B testing. It organizes experience by business domain, scenario, stage and optimization objective. Hybrid sparse/dense retrieval, tree-path proximity weighting and Qwen-Reranker retrieve relevant evidence; generated strategy configurations are checked for engineering feasibility and guardrail risks.",
+        "The experiment tree records strategies, parameters, metrics and context, enabling parent-child and sibling-branch comparisons. Confidence-weighted gains and guardrail-loss penalties guide local search within valid parameter ranges, or a switch to another strategy branch when gains stall. Recording successful and failed trials provides a reusable feedback loop for subsequent iterations. This work is a 2026 arXiv preprint."
+      ],
+      "zh": [
+        "作为第一作者，研发面向工业 A/B 测试策略迭代的自进化大模型智能体。按业务域、场景、阶段与优化目标组织经验树；融合稀疏与稠密检索，结合树路径邻近度加权与 Qwen-Reranker 精排，为策略配置生成检索历史证据，并检查工程可行性与护栏风险。",
+        "以实验树节点记录策略、参数、指标与上下文，进行父子版本和兄弟分支对比；结合置信度加权收益与护栏损失惩罚，决定在有效参数区间局部搜索，或在收益停滞时切换策略分支。成功与失败实验持续沉淀为后续迭代可复用的经验。该工作为 2026 年 arXiv 预印本。"
+      ]
+    },
+    "qadragon": {
+      "en": [
+        "I am the first author of QA-Dragon, a multimodal retrieval-augmented generation system for complex visual questions. The system drafts a candidate answer first, then decides in a query-aware manner whether that draft should be returned directly, verified through search, or handed to the retrieval-augmented pipeline.",
+        "Tool selection follows the detected knowledge gap of the draft, and the retrieval pipeline combines target cropping, image and text retrieval, evidence reranking, and answer verification to ground the final answer in retrieved evidence. Under single-source, multi-source, and multi-turn question settings, the system improves over the baseline by 5.06%, 6.35%, and 5.03% respectively."
+      ],
+      "zh": [
+        "我是 QA-Dragon 的第一作者，这是一个面向复杂视觉问题的多模态检索增强生成系统。系统先生成一个候选答案，再以问题感知的方式判断该草稿应当直接输出、交由搜索验证，还是进入检索增强流程。",
+        "工具选择由草稿所暴露的知识缺口决定，检索侧结合目标裁剪、图像与文本检索、证据重排与答案校验，利用检索证据支撑最终回答。在单源、多源与多轮问题设定下，较基线分别提升 5.06%、6.35% 与 5.03%。"
+      ]
+    },
+    "air": {
+      "en": [
+        "As first author, I developed AIR to decouple LLM intent reasoning from online serving. Offline, an LLM maps behavior records, user attributes and object descriptions into hierarchical intent paths, stored as reusable atomic knowledge. This moves semantic generation out of the online request path and makes the resulting knowledge cacheable and composable.",
+        "Online, AIR builds intent trees with behavior weights and time decay, retrieves target-relevant intent chains and fuses evidence with multi-head attention. Retrieval and composition approximate sequence-level semantic reasoning without live LLM calls. The system achieves approximately 400× throughput improvement, demonstrating an efficient path from offline LLM-generated knowledge to online evidence retrieval and composition."
+      ],
+      "zh": [
+        "作为第一作者，研发 AIR，实现大模型意图推理与在线服务解耦。离线将行为记录、用户属性与对象描述输入 LLM，生成分层语义意图路径并存储为可复用的原子知识，将语义生成移出在线请求链路，使知识能够缓存与组合。",
+        "在线按行为权重与时间衰减构建意图树，检索目标相关意图链，并以多头注意力融合证据；通过检索与组合近似序列级语义推理，无需实时调用 LLM，实现约 400× 吞吐提升。重点在于将离线生成的语义知识转化为在线可检索、可组合的证据。"
+      ]
+    }
+  }
+}
